@@ -6,14 +6,14 @@ import { seoPlugin } from "vuepress-plugin-seo2";
 import { defineUserConfig } from "vuepress";
 
 export default defineUserConfig({
-  base: "/learning-kotlin-multiplatform/",
+  base: "/learning-flutter",
   port: 3000,
 
   head: [
-    ["link", { rel: "icon", href: "/learning-kotlin-multiplatform/favicon.ico" }],
+    ["link", { rel: "icon", href: "/learning-flutter/favicon.ico" }],
     [
       "link",
-      { rel: "manifest", href: "/learning-kotlin-multiplatform/manifest.webmanifest" },
+      { rel: "manifest", href: "/learning-flutter/manifest.webmanifest" },
     ],
     ["meta", { name: "theme-color", content: "#bf4092" }],
   ],
@@ -24,10 +24,6 @@ export default defineUserConfig({
         selectLanguageName: "English",
         sidebar: [
           "/overview/",
-          "/configure/",
-          "/ui/",
-          "/network/",
-          "/more/",
         ],
       },
     },
