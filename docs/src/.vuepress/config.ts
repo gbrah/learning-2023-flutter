@@ -7,11 +7,11 @@ import { defineUserConfig } from "vuepress";
 
 export default defineUserConfig({
   
-  base: "/learning-kotlin-multiplatform/",
+  base: "/learning-flutter/",
   port: 3000,
 
   head: [
-    ["link", { rel: "icon", href: "/learning-kotlin-multiplatform/favicon.ico" }],
+    ["link", { rel: "icon", href: "/learning-flutter/favicon.ico" }],
     [
       "link",
       { rel: "manifest", href: "/learning-flutter/manifest.webmanifest" },
@@ -25,16 +25,12 @@ export default defineUserConfig({
         sidebar: [
           { text: 'Home', link: '/' },
           "/overview/",
-          "/configure/",
-          "/ui/",
-          "/network/",
-          "/more/",
         ], 
   }),
 
   plugins: [
     seoPlugin({
-      hostname: "https://worldline.github.io/learning-flutter",
+      hostname: "https://worldline.github.io/gbrah/learning-flutter",
     }),
   ],
 });
