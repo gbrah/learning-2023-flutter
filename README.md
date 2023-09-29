@@ -1,20 +1,4 @@
-# Codelab - Kotlin multiplatform with compose  (Android, iOS & Desktop)
-
-Discover kotlin multiplatform features in practice.
-
-## [→ Start the codelab ←](https://worldline.github.io/learning-kotlin-multiplatform/)
-
-![avatar](docs/src/assets/images/qrcode.png)  
-
-## Summary 
-* Configure a multiplatform project 
-    * Shared library principles for Android,iOS and Desktop jvm 
-* Create a common UI for all your platforms 
-    * Kotlin compose & declarative UI, state management 
-* Manage network connectivity 
-    * Ktor client configuration, repository creation with flow 
-* Let's go further
-    * Ressource management (image & strings), paging with compose 
+# Learning Flutter
 
 # KMP | Tech at Worldline
 ## Who we are ?
