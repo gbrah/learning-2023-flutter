@@ -16,7 +16,7 @@ export default defineUserConfig({
       "link",
       { rel: "manifest", href: "/learning-flutter/manifest.webmanifest" },
     ],
-    ["meta", { name: "theme-color", content: "#bf4092" }],
+    ["meta", { name: "theme-color", content: "#027DFD" }],
   ],
 
   theme: defaultTheme({
