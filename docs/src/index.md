@@ -1,25 +1,25 @@
 ---
 home: true
 heroImage: ./logo.png
-heroText:  Hands-on Lab - Kotlin multiplatform with compose  (Android, iOS & Desktop)
-tagline: Discover kotlin multiplatform features in practice.
+heroText:  Hands-on Lab - Flutter
+tagline: Discover Flutter in practice.
 actions:
   - text: Start the Hands-on Lab →
     link: /overview/
     type: primary
 features:
-  - title: 1. Configure a multiplatform project 
-    details: Shared library principles for Android,iOS and Desktop jvm (~10min)
-  - title: 2. Create a common UI for all your platforms 
-    details: Kotlin compose & declarative UI, state management (~30min)
-  - title: 3. Manage network connectivity 
-    details: Ktor client configuration, repository creation with flow (~10min)
-  - title: 4. Let's go further
-    details: Ressource management (image & strings), paging with compose (~10min)
+  - title: 1. lorem ipsum 
+    details: lorem ipsum (~10min)
+  - title: 2. lorem ipsum
+    details: lorem ipsum (~10min)
+  - title: 3. lorem ipsum
+    details: lorem ipsum (~10min)
+  - title: 4. lorem ipsum
+    details:  lorem ipsum (~10min)
 footer: Worldline © 2023 | tech at Worldline
 ---
 
-# KMP | Tech at Worldline
+# Flutter | Tech at Worldline
 ## Who we are 
 
 ![avatar](./assets/images/logo_worldline.png)  
