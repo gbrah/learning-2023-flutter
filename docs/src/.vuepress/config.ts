@@ -14,7 +14,7 @@ export default defineUserConfig({
     ["link", { rel: "icon", href: "/learning-kotlin-multiplatform/favicon.ico" }],
     [
       "link",
-      { rel: "manifest", href: "/learning-kotlin-multiplatform/manifest.webmanifest" },
+      { rel: "manifest", href: "/learning-flutter/manifest.webmanifest" },
     ],
     ["meta", { name: "theme-color", content: "#bf4092" }],
   ],
@@ -34,7 +34,7 @@ export default defineUserConfig({
 
   plugins: [
     seoPlugin({
-      hostname: "https://worldline.github.io/learning-kotlin-multiplatform",
+      hostname: "https://worldline.github.io/learning-flutter",
     }),
   ],
 });
