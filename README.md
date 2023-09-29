@@ -1,6 +1,6 @@
 # Learning Flutter
 
-# KMP | Tech at Worldline
+# Flutter | Tech at Worldline
 ## Who we are ?
 
 ![avatar](docs/src/assets/images/logo_worldline.png)  
