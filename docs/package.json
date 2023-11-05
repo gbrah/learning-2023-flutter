@@ -1,14 +1,14 @@
 {
-  "name": "learning-kotlin",
+  "name": "learning-flutter",
   "version": "1.0.0",
-  "description": "Kotlin multiplatform training",
+  "description": "Fluttertraining",
   "authors": [
     {
       "name": "Gharbi Ibrahim",
       "email": "ibrahim.gharbi@worldline.com"
     }
   ],
-  "repository": "https://github.com/worldline/learning-kotlin-multiplatform",
+  "repository": "https://github.com/gbrah/learning-flutter",
   "scripts": {
     "dev": "vuepress dev src",
     "build": "vuepress build src"

@@ -24,6 +24,7 @@ export default defineUserConfig({
         selectLanguageName: "English",
         sidebar: [
           "/overview/",
+          "/dart/",
         ],
       },
     },
@@ -31,7 +32,7 @@ export default defineUserConfig({
 
   plugins: [
     seoPlugin({
-      hostname: "https://worldline.github.io/learning-kotlin-multiplatform",
+      hostname: "https://gbrah.github.io/learning-flutter",
     }),
   ],
 });

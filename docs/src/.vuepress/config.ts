@@ -25,6 +25,7 @@ export default defineUserConfig({
         sidebar: [
           { text: 'Home', link: '/' },
           "/overview/",
+          "/dart/",
         ], 
   }),
 

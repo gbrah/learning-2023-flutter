@@ -2,10 +2,10 @@
   "theme_color": "#f635a4",
   "background_color": "#e8d4f2",
   "display": "standalone",
-  "scope": "/learning-kotlin-multiplatform/",
-  "start_url": "/learning-kotlin-multiplatform/index.html",
-  "name": "Kotlin training",
-  "short_name": "Kotlin training",
+  "scope": "/learning-flutter/",
+  "start_url": "/learning-flutter/index.html",
+  "name": "Flutter training",
+  "short_name": "Flutter training",
   "icons": [
     {
       "src": "icon-192x192.png",

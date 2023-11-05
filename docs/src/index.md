@@ -8,14 +8,14 @@ actions:
     link: /overview/
     type: primary
 features:
-  - title: 1. lorem ipsum 
-    details: lorem ipsum (~10min)
-  - title: 2. lorem ipsum
-    details: lorem ipsum (~10min)
-  - title: 3. lorem ipsum
-    details: lorem ipsum (~10min)
-  - title: 4. lorem ipsum
-    details:  lorem ipsum (~10min)
+  - title: 1. Introduction
+    details:  What is Flutter? - History - Architecture
+  - title: 2. DART language
+    details: Basics (null, safety, control flow , lambdas...) and Advanced features (async, future...)
+  - title: 3. Getting started
+    details: Flutter install, hello world, project structure, pubspec plugins...
+  - title: 4.  🚧 Under building 
+    details: coming soon...
 footer: Worldline © 2023 | tech at Worldline
 ---
 
