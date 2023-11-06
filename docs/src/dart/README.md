@@ -106,7 +106,7 @@ int? age; // Nullable, can be assigned null
 Dart provides the `?.` operator for conditional access. It allows you to access a property or method on an object only if the object is not `null`.
 
 ``` dart 
-tring? maybeName;
+String? maybeName;
 String? lengthString = maybeName?.length.toString(); // Will be null if maybeName is null
 ```
 ####  Null Checking

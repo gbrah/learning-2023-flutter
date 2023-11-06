@@ -50,6 +50,19 @@ Here's a brief overview of some key Flutter versions:
 
 5. **Mobile Updates:** Flutter 3 introduces several mobile updates, including support for foldable mobile devices, iOS variable refresh rate support for smoother animations, simplified iOS app releases, and a Gradle version update.
 
+### Flutter platforms support
+             
+|Platform   |Supported   |Best effort	   |
+|---|---|---|
+|Android SDK	   21-34|   |19-20	   |
+|iOS	16	    |11-15	    |10-, arm7v    |
+|Linux Debian   |10-12	   |9-   |
+|Linux Ubuntu   |18.04 LTS   |20.04-23.04   |
+|macOS   |Ventura (13+)   |Mojave (10.14) to Monterey (12)	   |
+|Windows	   |10   |7, 8, and 11	   |
+|Chrome - Firefox - Safari - Edge	   |latest 2 releases	   |96+ - 99+ - 14+ - 96+   |
+
+  
 
 ### The Flutter Architecture
 
