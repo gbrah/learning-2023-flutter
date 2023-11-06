@@ -622,7 +622,7 @@ Dart introduces advanced language features like mixins, which allow you to reuse
 
 ## 🧪 Exercices 
 
-1. Future Handling
+1. **Future Handling**
 
 Write a Dart program that simulates fetching data asynchronously from a server using a Future. Create a function fetchDataFromServer that returns a 
 ``` dart
@@ -630,19 +630,19 @@ Future<String>
 ```
 representing data retrieval. Implement error handling using the catchError method and display the result when the Future is complete.
 
-2.  Async Function
+2.  **Async Function**
 
 Create an async function called downloadData that simulates downloading a large file. Use a Future to represent the download process and await to wait for it to complete. Display a message when the download is finished.
 
-3. Using Isolates
+3. **Using Isolates**
 
 Write a program that uses an isolate to calculate the factorial of a number. Create a function calculateFactorial that takes an integer and returns its factorial. Use message passing to communicate with the isolate and display the result in the main thread.
 
-4. Using MixIn
+4. **Using MixIn**
 
 Create a mixin called Loggable that provides logging functionality to classes. The mixin should include a method log that takes a message as a parameter and prints it with a timestamp. Create a class Logger that uses the Loggable mixin to log messages. Demonstrate the use of the Loggable mixin in the Logger class to log messages.
 
-5. Streams : Real-time Data Dashboard
+5. **Streams : Real-time Data Dashboard**
 
 Create a Dart program that simulates a real-time data dashboard using streams. The dashboard should display live data updates and visualize data in real-time. Use stream controllers and subscriptions to manage the data flow and update the dashboard interface.
 
