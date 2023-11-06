@@ -193,7 +193,7 @@ void main() {
 }
 ```
 
-### Lambda or anonymous function 
+### Lambda/Anonymous function 
 
 ```dart
 const list = ['apples', 'bananas', 'oranges'];
@@ -530,19 +530,264 @@ void main() {
 
 ## Advanced features 
 
+### Concurrency 
+
+Concurrency is an important aspect of Dart programming that enables you to perform multiple tasks simultaneously. This chapter explores `Future`, `async` functions, and `Isolate` to help you better understand concurrency in Dart.
+
+#### async/await functions
+
+The `async` keyword before a function indicates that it performs asynchronous operations. The `await` keyword is used within async functions to wait for the completion of a future before continuing.
+
+```dart
+Future<void> performAsyncOperation() async {
+  final result = await fetchData();
+  // Continue execution after the Future is complete.
+}
+```
+
+#### Future
+
+A `Future` represents a potential value or error that will be available at some time in the future. `Future` is used for asynchronous programming and allows you to perform non-blocking operations. Creating a `Future` using the `Future` constructor.
+
+Using `async` and `await` to work with `Future` for cleaner asynchronous code.
+Handling completed, error, and uncompleted `Future` using `then`, `catchError`, and `whenComplete`.
+
+```dart
+Future<void> fetchData() async {
+  try {
+    final data = await fetchDataFromServer();
+    print('Data received: $data');
+  } catch (error) {
+    print('Error: $error');
+  }
+}
+```
+
+#### Isolates
+
+Isolates in Dart are lightweight concurrent processes that allow your application to take full advantage of multi-core processors. They enable parallel execution and can be instrumental in optimizing performance.
+
+
+```dart
+import 'dart:isolate';
+
+void isolateFunction(SendPort sendPort) {
+  // Perform work in the isolate.
+  final result = performIsolateTask();
+  sendPort.send(result);
+}
+
+void main() async {
+  final receivePort = ReceivePort();
+  final isolate = await Isolate.spawn(isolateFunction, receivePort.sendPort);
+  final result = await receivePort.first;
+  print('Isolate result: $result');
+  receivePort.close();
+  isolate.kill();
+}
+```
+
+#### Streams 
+
+Streams in Dart facilitate asynchronous data flow, enabling real-time data processing and event handling. Streams represent a sequence of values over time. 
+In this example, we create a stream that emits integers at regular intervals and listen to the stream to print the received values.
+
+``` dart
+import 'dart:async';
+
+void main() {
+  // Create a StreamController to manage the stream
+  final StreamController<int> streamController = StreamController<int>();
+
+  // Create a stream that emits values every second
+  final Stream<int> dataStream = Stream.periodic(Duration(seconds: 1), (count) => count);
+
+  // Start listening to the stream
+  final subscription = dataStream.listen((data) {
+    print('Received data: $data');
+  });
+
+  // After 5 seconds, stop listening to the stream and close the controller
+  Future.delayed(Duration(seconds: 5), () {
+    subscription.cancel(); // Stop listening
+    streamController.close(); // Close the stream controller
+  });
+}
+```
+
 ### Mixin
 
 Dart introduces advanced language features like mixins, which allow you to reuse code across multiple classes without inheritance.
 
-### Future, Stream
-For handling asynchronous operations, Dart provides two essential constructs: `Future` and `Stream`. Futures represent a single value that may be available in the future, while Streams represent a sequence of values over time. This is crucial for managing asynchronous tasks effectively.
 
-### Isolate
-Isolates in Dart are lightweight concurrent processes that allow your application to take full advantage of multi-core processors. They enable parallel execution and can be instrumental in optimizing performance.
+## 🧪 Exercices 
 
+1. Future Handling
+
+Write a Dart program that simulates fetching data asynchronously from a server using a Future. Create a function fetchDataFromServer that returns a Future<String> representing data retrieval. Implement error handling using the catchError method and display the result when the Future is complete.
+
+2.  Async Function
+
+Create an async function called downloadData that simulates downloading a large file. Use a Future to represent the download process and await to wait for it to complete. Display a message when the download is finished.
+
+3. Using Isolates
+
+Write a program that uses an isolate to calculate the factorial of a number. Create a function calculateFactorial that takes an integer and returns its factorial. Use message passing to communicate with the isolate and display the result in the main thread.
+
+4. Using MixIn
+
+Create a mixin called Loggable that provides logging functionality to classes. The mixin should include a method log that takes a message as a parameter and prints it with a timestamp. Create a class Logger that uses the Loggable mixin to log messages. Demonstrate the use of the Loggable mixin in the Logger class to log messages.
+
+5. Streams : Real-time Data Dashboard
+
+Create a Dart program that simulates a real-time data dashboard using streams. The dashboard should display live data updates and visualize data in real-time. Use stream controllers and subscriptions to manage the data flow and update the dashboard interface.
+
+## 🎯 Solutions 
+
+::: details click here to view the solutions
+
+```dart 
+// Exercice 1
+Future<String> fetchDataFromServer() async {
+  await Future.delayed(Duration(seconds: 2)); // Simulate async operation
+  return 'Data from the server';
+}
+
+void main() {
+  fetchData().then((data) {
+    print('Data received: $data');
+  }).catchError((error) {
+    print('Error: $error');
+  });
+}
+
+Future<void> fetchData() async {
+  try {
+    final data = await fetchDataFromServer();
+    print('Data received: $data');
+  } catch (error) {
+    print('Error: $error');
+  }
+}
+
+//Exercice 2
+
+Future<void> downloadData() async {
+  print('Downloading data...');
+
+  // Simulate a delay for downloading
+  await Future.delayed(Duration(seconds: 3));
+
+  print('Download complete.');
+}
+
+void main() {
+  downloadData();
+}
+
+// Exercice 3 
+import 'dart:isolate';
+
+int calculateFactorial(int n) {
+  if (n == 0) return 1;
+  int result = 1;
+  for (int i = 1; i <= n; i++) {
+    result *= i;
+  }
+  return result;
+}
+
+void isolateFunction(SendPort sendPort) {
+  final receivePort = ReceivePort();
+  sendPort.send(receivePort.sendPort);
+
+  receivePort.listen((message) {
+    if (message is int) {
+      final result = calculateFactorial(message);
+      sendPort.send(result);
+    }
+  });
+}
+
+void main() async {
+  final receivePort = ReceivePort();
+  final isolate = await Isolate.spawn(isolateFunction, receivePort.sendPort);
+
+  final sendPort = await receivePort.first;
+  sendPort.send(5);
+
+  final result = await receivePort.first;
+  print('Factorial result: $result');
+
+  receivePort.close();
+  isolate.kill();
+}
+
+// Exercice 4 
+mixin Loggable {
+  void log(String message) {
+    final timestamp = DateTime.now();
+    print('$timestamp: $message');
+  }
+}
+class Logger with Loggable {
+  // Additional properties and methods specific to the Logger class, if needed.
+}
+
+void main() {
+  final logger = Logger();
+  logger.log('This is an info message.');
+  logger.log('Another info message.');
+}
+
+// Exercice 5 
+import 'dart:async';
+
+class DataDashboard {
+  StreamController<int> _dataStreamController = StreamController<int>.broadcast();
+
+  Stream<int> get dataStream => _dataStreamController.stream;
+
+  DataDashboard() {
+    // Simulate data updates at regular intervals (e.g., every 2 seconds)
+    Timer.periodic(Duration(seconds: 2), (timer) {
+      // Generate random data
+      final data = _generateRandomData();
+      // Add the data to the stream
+      _dataStreamController.add(data);
+    });
+  }
+
+  int _generateRandomData() {
+    // Simulate data generation (replace with your actual data source)
+    return DateTime.now().second; // Example: Display seconds as data
+  }
+
+  void dispose() {
+    _dataStreamController.close();
+  }
+}
+
+void main() {
+  final dashboard = DataDashboard();
+
+  // Subscribe to the data stream and display updates
+  final subscription = dashboard.dataStream.listen((data) {
+    print('Received data update: $data');
+  });
+
+  // To stop the dashboard, uncomment the following line after some time
+  // Future.delayed(Duration(seconds: 10), () {
+  //   dashboard.dispose();
+  // });
+
+  // Keep the program running to receive real-time updates
+  // To stop the program, press Ctrl+C
+}
+```
+:::
 
 ## 📖 Further reading
-
 - [Dart SDK](https://dart.dev/get-dart)
 - [Dart language official docs](https://dart.dev/language)
 - [DartPad](https://dartpad.dev/?)
