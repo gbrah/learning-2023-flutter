@@ -791,7 +791,7 @@ void main() {
 ```
 :::
 
-## Mini project : Guess the Number
+## 🧪 Mini project : Guess the Number
 
 Create a command-line game where the player tries to guess a randomly generated number.
 
@@ -808,7 +808,7 @@ Create a command-line game where the player tries to guess a randomly generated 
 
 This project allows students to practice and consolidate various programming concepts while creating an entertaining game. It can be completed in a few hours and serves as a great summary of the topics covered.
 
-## Solution 
+## 🎯 Solution 
 
 ::: details
 ```dart 
