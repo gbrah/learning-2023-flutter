@@ -2,9 +2,23 @@
 
 ## Prerequisites
 
-::: warning
-UNDER CONSTRUCTION
-:::
+Before developing in Flutter, it's beneficial to have some prerequisites and a foundation in the following areas:
+
+1. **Dart Programming Language:** Flutter uses the Dart programming language. While you can learn Dart alongside Flutter, having a basic understanding of Dart before starting with Flutter development will be advantageous.
+
+2. **Programming Fundamentals:** Solid knowledge of programming fundamentals like variables, data types, control structures (if, for, while), and functions is essential.
+
+3. **Object-Oriented Programming (OOP):** Flutter and Dart are based on OOP principles. Understanding concepts like classes, objects, inheritance, and polymorphism is crucial.
+
+4. **Integrated Development Environment (IDE):** You'll need an IDE for Flutter development. Android Studio with the Flutter plugin or Visual Studio Code with the Dart and Flutter extensions are popular choices. 
+
+5. **User Interface (UI) Principles:** An understanding of UI/UX design and layout concepts is valuable for creating user-friendly Flutter apps.
+
+6. **Command-Line Interface (CLI):** Flutter development involves using the command line for various tasks like project creation, running the app, and managing dependencies. Familiarity with CLI basics is necessary.
+
+7. **APIs and Networking:** If your app needs to interact with web services, having knowledge of API integration and networking concepts will be beneficial.
+
+8. **Asynchronous Programming:** Flutter apps often require asynchronous tasks. Understanding async/await and futures is important.
 
 ## Introduction
 
