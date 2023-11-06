@@ -929,43 +929,51 @@ Create a real-time CLI chat application using Dart that allows multiple users to
 ::: details click here to view a solution
 
 ``` dart
+// Server
 import 'dart:io';
 
-void main() {
-  final users = <String>{};
-  final messages = <String>[];
+void main() async {
+  final server = await ServerSocket.bind('127.0.0.1', 4040);
+  final clients = <WebSocket>[];
 
-  print('Welcome to the CLI Chat App!');
+  print('Chat server is running on ${server.address}:${server.port}');
 
-  stdout.write('Enter your username: ');
-  final username = stdin.readLineSync();
+  await for (var client in server) {
+    WebSocketTransformer.upgrade(client).then((webSocket) {
+      print('New client connected');
+      clients.add(webSocket);
 
-  if (username == null || username.isEmpty) {
-    print('Invalid username. Exiting...');
-    return;
-  }
-
-  users.add(username);
-  print('Hello, $username! Type "/quit" to exit the chat.');
-
-  final userStream = stdin.transform(Utf8Decoder()).transform(LineSplitter());
-
-  userStream.listen((input) {
-    if (input == '/quit') {
-      users.remove(username);
-      print('$username has left the chat.');
-    } else {
-      final message = '$username: $input';
-      messages.add(message);
-      users.forEach((user) {
-        if (user != username) {
-          print('[$user]: $input');
+      webSocket.listen((message) {
+        print('Received: $message');
+        for (var otherClient in clients) {
+          if (otherClient != webSocket) {
+            otherClient.add(message);
+          }
         }
+      }, onDone: () {
+        print('Client disconnected');
+        clients.remove(webSocket);
       });
-    }
+    });
+  }
+}
+
+// Client
+import 'dart:io';
+
+void main() async {
+  final socket = await WebSocket.connect('ws://127.0.0.1:4040');
+  print('Connected to the chat server');
+
+  socket.listen((message) {
+    print('Received: $message');
   });
 
-  messages.forEach(print);
+  var input = '';
+  while (input != '/quit') {
+    input = stdin.readLineSync() ?? '';
+    socket.add(input);
+  }
 }
 ```
 :::
