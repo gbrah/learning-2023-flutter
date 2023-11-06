@@ -530,11 +530,9 @@ void main() {
 
 ## Advanced features 
 
-### Concurrency 
-
 Concurrency is an important aspect of Dart programming that enables you to perform multiple tasks simultaneously. This chapter explores `Future`, `async` functions, and `Isolate` to help you better understand concurrency in Dart.
 
-#### async/await functions
+### `async/await` functions
 
 The `async` keyword before a function indicates that it performs asynchronous operations. The `await` keyword is used within async functions to wait for the completion of a future before continuing.
 
@@ -545,7 +543,7 @@ Future<void> performAsyncOperation() async {
 }
 ```
 
-#### Future
+### Future
 
 A `Future` represents a potential value or error that will be available at some time in the future. `Future` is used for asynchronous programming and allows you to perform non-blocking operations. Creating a `Future` using the `Future` constructor.
 
@@ -563,7 +561,7 @@ Future<void> fetchData() async {
 }
 ```
 
-#### Isolates
+### Isolates
 
 Isolates in Dart are lightweight concurrent processes that allow your application to take full advantage of multi-core processors. They enable parallel execution and can be instrumental in optimizing performance.
 
@@ -587,7 +585,7 @@ void main() async {
 }
 ```
 
-#### Streams 
+### Streams 
 
 Streams in Dart facilitate asynchronous data flow, enabling real-time data processing and event handling. Streams represent a sequence of values over time. 
 In this example, we create a stream that emits integers at regular intervals and listen to the stream to print the received values.
