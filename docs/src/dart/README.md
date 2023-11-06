@@ -624,7 +624,11 @@ Dart introduces advanced language features like mixins, which allow you to reuse
 
 1. Future Handling
 
-Write a Dart program that simulates fetching data asynchronously from a server using a Future. Create a function fetchDataFromServer that returns a Future<String> representing data retrieval. Implement error handling using the catchError method and display the result when the Future is complete.
+Write a Dart program that simulates fetching data asynchronously from a server using a Future. Create a function fetchDataFromServer that returns a 
+``` dart
+Future<String>
+```
+representing data retrieval. Implement error handling using the catchError method and display the result when the Future is complete.
 
 2.  Async Function
 
