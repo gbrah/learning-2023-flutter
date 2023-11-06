@@ -585,6 +585,8 @@ void main() async {
 }
 ```
 
+A `ReceivePort` is a non-broadcast stream. This means that it buffers incoming messages until a listener is registered. Only one listener can receive messages
+
 ### Streams 
 
 Streams in Dart facilitate asynchronous data flow, enabling real-time data processing and event handling. Streams represent a sequence of values over time. 
