@@ -239,8 +239,6 @@ You can download the SDK for integrated development environment [here](https://d
  dart pub upgrade
 ```
 
-
-
 [DartPad](https://dartpad.dev/) is an online platform that allows you to write and run Dart code directly in your browser, making it accessible for quick experimentation.
 
 ## 🧪 Exercices 
