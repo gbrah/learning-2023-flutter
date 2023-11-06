@@ -791,6 +791,129 @@ void main() {
 ```
 :::
 
+## Mini project : Guess the Number
+
+Create a command-line game where the player tries to guess a randomly generated number.
+
+1. The program generates a random number between 1 and 100 (inclusive).
+2. The player is given a limited number of attempts (e.g., 10) to guess the number correctly.
+3. After each guess, the program provides feedback, indicating if the guessed number is too high or too low.
+4. The game ends when the player guesses the correct number or runs out of attempts.
+5. Keep track of high scores and display them.
+6. Implement multiple difficulty levels with different number ranges.
+
+**More features**
+- Introduce more complex rules, such as time limits.
+- Add animations or graphical elements (e.g., ASCII art) to make the CLI game more engaging.
+
+This project allows students to practice and consolidate various programming concepts while creating an entertaining game. It can be completed in a few hours and serves as a great summary of the topics covered.
+
+## Solution 
+
+::: details
+```dart 
+import 'dart:io';
+import 'dart:math';
+
+class Game {
+  late int targetNumber;
+  late int maxAttempts;
+  late int attempts;
+  late List<int> guesses;
+  late List<String> highScores;
+
+  Game(int maxAttempts) {
+    targetNumber = Random().nextInt(100) + 1;
+    this.maxAttempts = maxAttempts;
+    attempts = 0;
+    guesses = [];
+    highScores = [];
+  }
+
+  void start() {
+    print('Welcome to Guess the Number Game!');
+    print('You have $maxAttempts attempts to guess the number between 1 and 100.');
+
+    while (attempts < maxAttempts) {
+      stdout.write('Guess #${attempts + 1}: ');
+      final input = stdin.readLineSync();
+      if (input == null || input.isEmpty) {
+        print('Please enter a valid number.');
+        continue;
+      }
+
+      try {
+        final guess = int.parse(input);
+        attempts++;
+        guesses.add(guess);
+        if (guess == targetNumber) {
+          print('Congratulations! You guessed the correct number in $attempts attempts.');
+          saveHighScore(attempts);
+          break;
+        } else if (guess < targetNumber) {
+          print('Try a higher number.');
+        } else {
+          print('Try a lower number.');
+        }
+      } catch (e) {
+        print('Invalid input. Please enter a valid number.');
+      }
+    }
+
+    if (attempts == maxAttempts) {
+      print('Out of attempts. The correct number was $targetNumber.');
+    }
+
+    printHighScores();
+  }
+
+  void saveHighScore(int score) {
+    highScores.add('$score attempts');
+    highScores.sort((a, b) => int.parse(a.split(' ')[0]).compareTo(int.parse(b.split(' ')[0])));
+    if (highScores.length > 5) {
+      highScores.removeLast();
+    }
+  }
+
+  void printHighScores() {
+    if (highScores.isNotEmpty) {
+      print('\nHigh Scores:');
+      for (final score in highScores) {
+        print(score);
+      }
+    }
+  }
+}
+
+void main() {
+  print('Choose a difficulty level:');
+  print('1. Easy (1-50)');
+  print('2. Medium (1-100)');
+  print('3. Hard (1-200)');
+  print('Enter the corresponding number:');
+  final input = stdin.readLineSync();
+  int maxNumber;
+  switch (input) {
+    case '1':
+      maxNumber = 50;
+      break;
+    case '2':
+      maxNumber = 100;
+      break;
+    case '3':
+      maxNumber = 200;
+      break;
+    default:
+      print('Invalid choice. Defaulting to medium difficulty.');
+      maxNumber = 100;
+  }
+
+  final game = Game(maxNumber == 50 ? 10 : maxNumber == 200 ? 20 : 15);
+  game.start();
+}
+```
+:::
+
 ## 📖 Further reading
 - [Dart SDK](https://dart.dev/get-dart)
 - [Dart language official docs](https://dart.dev/language)
