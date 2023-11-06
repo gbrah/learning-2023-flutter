@@ -970,6 +970,87 @@ void main() {
 ```
 :::
 
+## 🧪 Mini project 3 : To-Do List with async
+
+Create a command-line to-do list application using Dart that allows users to manage their tasks. The application should support asynchronous operations, such as saving tasks to a file and reading tasks from the file. It provides features to add, view, and remove tasks.
+
+To implement this project, you can use async/await for reading and writing tasks to a file asynchronously. Here's an outline of the project:
+
+Task Management: Implement a class to represent tasks, allowing users to create, view, and remove tasks.
+File Operations: Use dart:io to read tasks from a file when the application starts and save tasks to a file when they are added or removed. Use async/await to perform these file operations asynchronously.
+CLI User Interface: Create a user-friendly CLI interface where users can interact with the to-do list by typing commands (e.g., add, view, remove).
+Asynchronous Operations: Use async/await for reading and writing tasks to the file to ensure the application remains responsive while performing file operations.
+Data Persistence: Tasks should persist between application runs. Implement reading and writing tasks to/from a text file as JSON.
+
+## 🎯 A solution 
+
+::: details click here to view the answer
+
+``` dart 
+import 'dart:io';
+import 'dart:convert';
+
+class Task {
+  final String title;
+  bool isCompleted;
+
+  Task(this.title, this.isCompleted);
+
+  Map<String, dynamic> toJson() {
+    return {
+      'title': title,
+      'isCompleted': isCompleted,
+    };
+  }
+}
+
+Future<void> main() async {
+  final toDoList = <Task>[];
+  final file = File('tasks.json');
+
+  // Read tasks from the file if it exists
+  if (await file.exists()) {
+    final contents = await file.readAsString();
+    final tasksData = json.decode(contents) as List<dynamic>;
+    toDoList.addAll(tasksData.map((taskData) =>
+        Task(taskData['title'] as String, taskData['isCompleted'] as bool)));
+  }
+
+  print('Welcome to the To-Do List CLI App!');
+  while (true) {
+    print('\nOptions:');
+    print('1. Add a task');
+    print('2. View tasks');
+    print('3. Quit');
+    stdout.write('Choose an option (1/2/3): ');
+    final option = int.tryParse(stdin.readLineSync());
+
+    switch (option) {
+      case 1:
+        stdout.write('Enter the task title: ');
+        final title = stdin.readLineSync();
+        toDoList.add(Task(title!, false));
+        break;
+      case 2:
+        print('\nYour To-Do List:');
+        for (var i = 0; i < toDoList.length; i++) {
+          final task = toDoList[i];
+          print('${i + 1}. ${task.isCompleted ? '[X]' : '[ ]'} ${task.title}');
+        }
+        break;
+      case 3:
+        // Save tasks to the file and exit
+        final tasksData = toDoList.map((task) => task.toJson()).toList();
+        final tasksJson = json.encode(tasksData);
+        await file.writeAsString(tasksJson);
+        print('Goodbye!');
+        return;
+      default:
+        print('Invalid option. Please choose 1, 2, or 3.');
+    }
+  }
+}
+```
 
 ## 📖 Further reading
 - [Dart SDK](https://dart.dev/get-dart)
