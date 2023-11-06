@@ -181,9 +181,9 @@ class Point {
 }
 ```
 
-### Lambdas
+### Single line fuction
 
-Lambdas allow you to define small, inline functions on the fly. Here's an example of a lambda that squares a number:
+ allow you to define small, inline functions on the fly. Here's an example of a  that squares a number:
 
 ```dart
 int square(int x) => x * x;
@@ -191,6 +191,31 @@ int square(int x) => x * x;
 void main() {
   final result = square(5); // result is 25
 }
+```
+
+### Lambda or anonymous function 
+
+```dart
+const list = ['apples', 'bananas', 'oranges'];
+
+list.map(
+  // the lamda passed in parameter
+  (item) {
+  return item.toUpperCase();
+   }
+).forEach(
+  // second lamdas
+  (item) {
+  print('$item: ${item.length}');
+  }
+);
+```
+Even shorter if you have only one instruction:
+
+```dart
+list
+    .map((item) => item.toUpperCase())
+    .forEach((item) => print('$item: ${item.length}'));
 ```
 
 ### Higher-Order Functions
