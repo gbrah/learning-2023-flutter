@@ -984,11 +984,11 @@ Create a command-line to-do list application using Dart that allows users to man
 
 To implement this project, you can use async/await for reading and writing tasks to a file asynchronously. Here's an outline of the project:
 
-Task Management: Implement a class to represent tasks, allowing users to create, view, and remove tasks.
-File Operations: Use dart:io to read tasks from a file when the application starts and save tasks to a file when they are added or removed. Use async/await to perform these file operations asynchronously.
-CLI User Interface: Create a user-friendly CLI interface where users can interact with the to-do list by typing commands (e.g., add, view, remove).
-Asynchronous Operations: Use async/await for reading and writing tasks to the file to ensure the application remains responsive while performing file operations.
-Data Persistence: Tasks should persist between application runs. Implement reading and writing tasks to/from a text file as JSON.
+* Task Management: Implement a class to represent tasks, allowing users to create, view, and remove tasks.
+* File Operations: Use dart:io to read tasks from a file when the application starts and save tasks to a file when they are added or removed. Use async/await to perform these file operations asynchronously.
+* CLI User Interface: Create a user-friendly CLI interface where users can interact with the to-do list by typing commands (e.g., add, view, remove).
+* Asynchronous Operations: Use async/await for reading and writing tasks to the file to ensure the application remains responsive while performing file operations.
+* Data Persistence: Tasks should persist between application runs. Implement reading and writing tasks to/from a text file as JSON.
 
 ## 🎯 A solution 
 
