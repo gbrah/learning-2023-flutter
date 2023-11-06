@@ -139,18 +139,6 @@ try {
 }
 ```
 
-### Lambdas
-
-Lambdas allow you to define small, inline functions on the fly. Here's an example of a lambda that squares a number:
-
-```dart
-int square(int x) => x * x;
-
-void main() {
-  final result = square(5); // result is 25
-}
-```
-
 ### Functions 
 
 ```dart
@@ -181,6 +169,28 @@ class Person {
 // Creating an instance of the Person class
 var person1 = Person('Alice', 28);
 person1.introduceYourself();
+
+// Constructor 
+class Point {
+  final double x;
+  final double y;
+
+  // Sets the x and y instance variables
+  // before the constructor body runs.
+  Point(this.x, this.y);
+}
+```
+
+### Lambdas
+
+Lambdas allow you to define small, inline functions on the fly. Here's an example of a lambda that squares a number:
+
+```dart
+int square(int x) => x * x;
+
+void main() {
+  final result = square(5); // result is 25
+}
 ```
 
 ### Higher-Order Functions
@@ -209,11 +219,27 @@ void main() {
 }
 ```
 
-###  IDE : DartPad
+###  IDE : SDK or DartPad 
 
 To write Dart code, developers have multiple options. 
 
 You can download the SDK for integrated development environment [here](https://dart.dev/get-dart)
+
+``` shell
+ dart create -t console my_app
+ cd my_app
+ dart analyze
+ dart test
+ dart run bin/my_app.dart
+ dart compile exe <DART_FILE>
+
+#You can also run pub commands using the dart tool:
+ dart pub get
+ dart pub outdated
+ dart pub upgrade
+```
+
+
 
 [DartPad](https://dartpad.dev/) is an online platform that allows you to write and run Dart code directly in your browser, making it accessible for quick experimentation.
 
