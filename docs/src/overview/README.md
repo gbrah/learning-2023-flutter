@@ -64,6 +64,8 @@ Here's a brief overview of some key Flutter versions:
 
 ### The Flutter Architecture
 
+![flutter architecture](../assets/images/arch.png)
+
 To understand how Flutter operates, it's essential to delve into its architecture. Flutter adheres to a layered architecture with the following components:
 
 - **Framework Layer**: This is where the core building blocks of Flutter reside. It provides a rich library of widgets for constructing user interfaces, manages gestures, animations, and layout, and is the foundation for app development.
