@@ -791,7 +791,7 @@ void main() {
 ```
 :::
 
-## 🧪 Mini project : Guess the Number
+## 🧪 Mini project 1: Guess the Number
 
 Create a command-line game where the player tries to guess a randomly generated number.
 
@@ -808,9 +808,9 @@ Create a command-line game where the player tries to guess a randomly generated 
 
 This project allows students to practice and consolidate various programming concepts while creating an entertaining game. It can be completed in a few hours and serves as a great summary of the topics covered.
 
-## 🎯 Solution 
+## 🎯 A solution 
 
-::: details
+::: details click here to view a solution
 ```dart 
 import 'dart:io';
 import 'dart:math';
@@ -913,6 +913,63 @@ void main() {
 }
 ```
 :::
+
+## 🧪 Mini-project 2: Chat Application
+
+Create a real-time CLI chat application using Dart that allows multiple users to exchange messages in real-time. The application should provide the following features:
+* User registration with usernames.
+* Chat rooms for group conversations.
+* Sending and receiving messages in real-time.
+* Real-time notifications for new messages.
+* Message history and chat room management.
+* Emoji support in messages.
+
+## 🎯 A solution
+
+::: details click here to view a solution
+
+``` dart
+import 'dart:io';
+
+void main() {
+  final users = <String>{};
+  final messages = <String>[];
+
+  print('Welcome to the CLI Chat App!');
+
+  stdout.write('Enter your username: ');
+  final username = stdin.readLineSync();
+
+  if (username == null || username.isEmpty) {
+    print('Invalid username. Exiting...');
+    return;
+  }
+
+  users.add(username);
+  print('Hello, $username! Type "/quit" to exit the chat.');
+
+  final userStream = stdin.transform(Utf8Decoder()).transform(LineSplitter());
+
+  userStream.listen((input) {
+    if (input == '/quit') {
+      users.remove(username);
+      print('$username has left the chat.');
+    } else {
+      final message = '$username: $input';
+      messages.add(message);
+      users.forEach((user) {
+        if (user != username) {
+          print('[$user]: $input');
+        }
+      });
+    }
+  });
+
+  messages.forEach(print);
+}
+```
+:::
+
 
 ## 📖 Further reading
 - [Dart SDK](https://dart.dev/get-dart)
