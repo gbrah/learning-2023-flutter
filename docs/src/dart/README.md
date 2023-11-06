@@ -1,4 +1,4 @@
-# DART
+# DART language
 
 Dart is the programming language used in Flutter development. It is an object-oriented, class-based language with a syntax that will feel familiar to developers coming from various programming backgrounds.
 
