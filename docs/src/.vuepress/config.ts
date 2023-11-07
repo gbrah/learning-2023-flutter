@@ -26,6 +26,7 @@ export default defineUserConfig({
           { text: 'Home', link: '/' },
           "/overview/",
           "/dart/",
+          "/ui/",
         ], 
   }),
 
