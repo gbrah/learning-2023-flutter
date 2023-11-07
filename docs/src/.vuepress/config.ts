@@ -27,6 +27,10 @@ export default defineUserConfig({
           "/overview/",
           "/dart/",
           "/ui/",
+          "/widget/",
+          "/net/",
+          "/db/",
+          "/nav/",
         ], 
   }),
 
