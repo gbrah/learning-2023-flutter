@@ -46,3 +46,17 @@ You'll discover how to load and display images in your Flutter app. We'll also e
 - Considerations for choosing between the two.
 
 Flutter provides two main design languages: Material Design and Cupertino. You'll explore the widgets associated with each and learn when to use one over the other based on platform-specific design guidelines.
+
+## 🧪 Exercices 
+
+```dart
+```
+
+## 🎯 Solutions
+
+::: details click here to view the solutions
+```dart
+```
+::: 
+
+## 📖 Further reading

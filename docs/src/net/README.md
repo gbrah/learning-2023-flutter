@@ -42,3 +42,17 @@ This lesson explains the importance of API communication and demonstrates how to
 - Storing and managing data obtained from APIs.
 
 Obtaining data from APIs is just the first step. This lesson guides you through the process of parsing JSON data from API responses and handling errors that might occur during network requests. You'll also learn how to store and manage data obtained from APIs efficiently.
+
+## 🧪 Exercices 
+
+```dart
+```
+
+## 🎯 Solutions
+
+::: details click here to view the solutions
+```dart
+```
+::: 
+
+## 📖 Further reading

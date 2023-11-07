@@ -39,3 +39,18 @@ SQLite is a powerful and lightweight relational database that's commonly used fo
 - Efficient querying and data retrieval techniques.
 
 You'll dive into the practical aspects of SQLite in Flutter. Learn how to create and manage SQLite databases, perform CRUD operations, and implement efficient querying and data retrieval techniques to interact with your database effectively.
+
+## 🧪 Exercices 
+
+```dart
+```
+
+## 🎯 Solutions
+
+::: details click here to view the solutions
+```dart
+```
+::: 
+
+## 📖 Further reading
+
