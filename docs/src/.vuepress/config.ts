@@ -31,6 +31,7 @@ export default defineUserConfig({
           "/net/",
           "/db/",
           "/nav/",
+          "/advanced/",
         ], 
   }),
 
