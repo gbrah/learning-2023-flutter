@@ -138,7 +138,8 @@ to display only the iconData and the title of the item.
 
 ![List](../assets/images/list.png)
 
-```dart:utils.dart
+::: details click here to view utils.dart
+```dart
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -181,6 +182,7 @@ List<Item> getRandomItem() {
 }
 
 ```
+:::
 
 3. **PageView**
 
@@ -203,7 +205,9 @@ AppBar buttons must contain an icon and a label.
 ::: details click here to view the solutions
 
 1. **Build a form with validation**
-```dart:MyFormPage.dart
+
+#### **`MyFormPage.dart`**
+```dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -458,7 +462,8 @@ class MyFormPage extends StatelessWidget {
 ```
 2. **List**
 
-```dart:MyListPage.dart
+#### **`MyListPage.dart`**
+```dart
 import 'package:flutter/material.dart';
 
 import '../utils.dart';
@@ -501,7 +506,8 @@ class MyListPage extends StatelessWidget {
 ```
 3. **PageView**
 
-```dart:MyListPage.dart
+#### **`MyListPage.dart`**
+```dart
 import 'package:flutter/material.dart';
 
 import '../utils.dart' as utils;
@@ -588,7 +594,9 @@ class _MyListPageState extends State<MyListPage> {
   }
 }
 ```
-```dart:main_screen.dart
+
+#### **`main_screen.dart`**
+```dart
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_part2/presentation/MyListPage.dart';
 
@@ -620,7 +628,8 @@ class _MainScreenState extends State<MainScreen> {
 ```
 4. **BottomNavigation + Appbar**
 
-```dart:main_screen.dart
+#### **`main_screen.dart`**
+```dart
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_part2/presentation/MyFormPage.dart';
 
@@ -672,7 +681,6 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 }
-
 ```
 ::: 
 
