@@ -138,6 +138,50 @@ to display only the iconData and the title of the item.
 
 ![List](../assets/images/list.png)
 
+```dart:utils.dart
+import 'dart:math';
+
+import 'package:flutter/material.dart';
+
+final _iconList = [Icons.mail, Icons.phone_missed, Icons.message, Icons.event];
+
+class Item {
+  final IconData iconData;
+  final String title;
+  final String content;
+
+  Item(this.iconData, this.title, this.content);
+}
+
+List<Item> getRandomItem() {
+  Random random = Random();
+  int numberOfItem = 0;
+  for (var i = 0; i < 10; i++) {
+    numberOfItem = numberOfItem + (random.nextInt(3) + 1);
+  }
+  List<Item> itemList = List();
+  for (var i = 0; i < numberOfItem; i++) {
+    int iconIndex = random.nextInt(4);
+    IconData iconData = _iconList[iconIndex];
+    String message;
+    if (iconData == Icons.mail) {
+      message = "Nouvel e-mail";
+    } else if (iconData == Icons.phone_missed) {
+      message = "Appel manqué";
+    } else if (iconData == Icons.message) {
+      message = "Nouveau message";
+    } else {
+      message = "Nouvel événement";
+    }
+    String content =
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis sem vel erat ultrices fermentum. Morbi tincidunt feugiat maximus. Aenean tempus purus ut quam sollicitudin, finibus tincidunt eros tempor. Morbi pellentesque mi id metus finibus posuere. Praesent auctor feugiat neque vitae consectetur. Pellentesque vel sodales sapien. Nulla quis justo et enim convallis facilisis in a leo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nulla luctus odio id lorem lobortis, sed dapibus lacus egestas. Nam nulla purus, ultricies a justo quis, bibendum convallis lorem.";
+    itemList.add(Item(iconData, message, content));
+  }
+  return itemList;
+}
+
+```
+
 3. **PageView**
 
 The goal of this part is to set up a PageView as the first cell of the list created in Part 2.
@@ -146,12 +190,489 @@ This will be composed of 3 pages, each page must be a rectangle of
 different colors.
 A number must be displayed centered in the middle of the page, this number must not move when scrolling on the PageView, this number must indicate the number of the active page of the PageView (see: video).
 
-![List](../assets/videos/pageview.mp4)
+![PageView](../assets/videos/pageview.mp4)
+
+4. **BottomNavigation + Appbar**
+
+The goal of this part is to set up a BottomNavigationBar allowing you to navigate between the screens created in Part 1 and Part 2 and an AppBar.
+The AppBar title must adapt to the displayed screen.
+AppBar buttons must contain an icon and a label.
 
 ## 🎯 Solutions
 
 ::: details click here to view the solutions
-```dart
+
+1. **Build a form with validation**
+```dart:MyFormPage.dart
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+class MyFormPage extends StatelessWidget {
+  final _formKey = GlobalKey<FormState>();
+  final RegExp _email = RegExp(
+      r"^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))$");
+
+  //regex numéro te telephone français en 03, 06 ou 07
+  final RegExp _phone =
+      RegExp(r'^(?:(?:\+|00)33|0)\s*(3|6|7)(?:[\s.-]*\d{2}){4}$');
+
+  final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _addressNumberController =
+      TextEditingController();
+  final TextEditingController _addressRoadController = TextEditingController();
+  final TextEditingController _addressZipCodeController =
+      TextEditingController();
+  final TextEditingController _addressCountryController =
+      TextEditingController();
+  final TextEditingController _mailController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _addressCityController = TextEditingController();
+
+  MyFormPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Formulaire"),
+      ),
+      body: Form(
+          key: _formKey,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: ListView(
+              children: [
+                const SizedBox(
+                  height: 24,
+                ),
+                Text(
+                  "Civilité",
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                TextFormField(
+                  controller: _lastNameController,
+                  decoration: const InputDecoration(labelText: "Nom"),
+                  // The validator receives the text that the user has entered.
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Entrez votre nom';
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  controller: _firstNameController,
+                  decoration: const InputDecoration(labelText: "Prenom"),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Entrez votre prénom';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+                Text(
+                  "Domicile",
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Flexible(
+                      flex: 1,
+                      child: TextFormField(
+                        controller: _addressNumberController,
+                        decoration: const InputDecoration(hintText: "N°"),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Entrez un numéro';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      flex: 3,
+                      child: TextFormField(
+                        keyboardType: TextInputType.streetAddress,
+                        controller: _addressRoadController,
+                        decoration: const InputDecoration(hintText: "rue"),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Entrez un nom de rue';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 50,
+                      child: TextFormField(
+                        maxLengthEnforcement: MaxLengthEnforcement.enforced,
+                        maxLength: 5,
+                        keyboardType: TextInputType.number,
+                        controller: _addressZipCodeController,
+                        decoration: const InputDecoration(
+                            hintText: "Code", counterText: ""),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Entrez un code postal';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: TextFormField(
+                        controller: _addressCityController,
+                        decoration: const InputDecoration(hintText: "Ville"),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Entrez un nom de ville';
+                          }
+                          return null;
+                        },
+                      ),
+                    )
+                  ],
+                ),
+                TextFormField(
+                  controller: _addressCountryController,
+                  decoration: const InputDecoration(hintText: "Pays"),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Entrez un nom de pays';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+                Text(
+                  "Moyen de contact",
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                TextFormField(
+                  controller: _mailController,
+                  decoration: const InputDecoration(
+                      hintText: "e-mail", prefixIcon: Icon(Icons.mail)),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Entrez une adresse e-mail';
+                    } else if (!_email.hasMatch(value)) {
+                      return 'Adresse e-mail invalide';
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  controller: _phoneController,
+                  decoration: const InputDecoration(
+                    hintText: "numéro de telephone",
+                    prefixIcon: Icon(Icons.phone),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Entrez un numéro de telephone';
+                    } else if (!_phone.hasMatch(value)) {
+                      return 'Numéro de téléphone invalide';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+                ElevatedButton(
+                  style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.resolveWith((Set states) {
+                      return Colors.blueAccent;
+                    }),
+                  ),
+                  onPressed: () {
+                    // Validate returns true if the form is valid, or false otherwise.
+                    if (_formKey.currentState!.validate()) {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            content: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  'Bonjour ${_firstNameController.text} ${_lastNameController.text.toUpperCase()}',
+                                ),
+                                const SizedBox(
+                                  height: 8,
+                                ),
+                                Text(
+                                  'Votre adresse est ${_addressNumberController.text} ${_addressRoadController.text}\n${_addressZipCodeController.text} ${_addressCityController.text} ${_addressCountryController.text}',
+                                ),
+                                const SizedBox(
+                                  height: 8,
+                                ),
+                                Text('Mail : ${_mailController.text}'),
+                                const SizedBox(
+                                  height: 8,
+                                ),
+                                Text('Phone : ${_phoneController.text}')
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    }
+                  },
+                  child: const Text(
+                    'Valider',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+              ],
+            ),
+          )),
+    );
+  }
+}
+```
+2. **List**
+
+```dart:MyListPage.dart
+import 'package:flutter/material.dart';
+
+import '../utils.dart';
+
+class MyListPage extends StatelessWidget {
+  const MyListPage({Key? key, required this.itemList}) : super(key: key);
+
+  final List<Item> itemList;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Liste"),
+      ),
+      body: ListView.builder(
+          itemCount: itemList.length,
+          itemBuilder: (BuildContext listContext, int index) {
+            var item = itemList[index];
+            return Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Icon(item.iconData),
+                ),
+                Text(
+                  item.title,
+                  style: const TextStyle(
+                    fontSize: 12,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            );
+          }),
+    );
+  }
+}
+```
+3. **PageView**
+
+```dart:MyListPage.dart
+import 'package:flutter/material.dart';
+
+import '../utils.dart' as utils;
+
+class MyListPage extends StatefulWidget {
+  @override
+  _MyListPageState createState() => _MyListPageState();
+
+  const MyListPage({
+    Key? key,
+    required this.itemList,
+  }) : super(key: key);
+
+  final List<utils.Item> itemList;
+}
+
+class _MyListPageState extends State<MyListPage> {
+  int _currentPagerIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        itemCount: widget.itemList.length + 1,
+        itemBuilder: (BuildContext listContext, int index) {
+          if (index == 0) {
+            return SizedBox(
+              height: 200,
+              child: Stack(
+                children: [
+                  Positioned.fill(
+                    child: PageView(
+                      onPageChanged: (index) {
+                        setState(() {
+                          _currentPagerIndex = index;
+                        });
+                      },
+                      children: <Widget>[
+                        Container(
+                          color: Colors.cyanAccent,
+                        ),
+                        Container(
+                          color: Colors.greenAccent,
+                        ),
+                        Container(
+                          color: Colors.yellowAccent,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 8.0),
+                      child: Text(getText(_currentPagerIndex)),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }
+          var item = widget.itemList[index - 1];
+          return Row(
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8),
+                child: Icon(item.iconData),
+              ),
+              Text(item.title),
+            ],
+          );
+        });
+  }
+
+  getText(int currentPagerIndex) {
+    if (currentPagerIndex == 0) {
+      return '1';
+    } else if (currentPagerIndex == 1) {
+      return "2";
+    } else {
+      return "3";
+    }
+  }
+}
+```
+```dart:main_screen.dart
+import 'package:flutter/material.dart';
+import 'package:flutter_widget_part2/presentation/MyListPage.dart';
+
+import '../utils.dart';
+
+class MainScreen extends StatefulWidget {
+  const MainScreen({Key? key}) : super(key: key);
+
+  @override
+  _MainScreenState createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  final List<Item> _itemList = getRandomItem();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Liste"),
+      ),
+      body: MyListPage(
+        itemList: _itemList,
+      ),
+    );
+  }
+}
+
+```
+4. **BottomNavigation + Appbar**
+
+```dart:main_screen.dart
+import 'package:flutter/material.dart';
+import 'package:flutter_widget_part2/presentation/MyFormPage.dart';
+
+import '../utils.dart';
+import 'MyListPage.dart';
+
+class MainScreen extends StatefulWidget {
+  const MainScreen({Key? key}) : super(key: key);
+
+  @override
+  _MainScreenState createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  int _currentIndex = 0;
+
+  final List<Widget> _tabs = [
+    MyListPage(itemList: getRandomItem()),
+    MyFormPage(),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(_currentIndex == 0 ? "Liste" : "Formulaire"),
+      ),
+      body: _tabs[_currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _currentIndex,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.black,
+          backgroundColor: Colors.blue,
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.list),
+              label: "List",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.insert_drive_file),
+              label: "Formulaire",
+            )
+          ]),
+    );
+  }
+}
+
 ```
 ::: 
 
