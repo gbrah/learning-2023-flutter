@@ -933,48 +933,76 @@ Create a real-time CLI chat application using Dart that allows multiple users to
 import 'dart:io';
 
 void main() async {
-  final server = await ServerSocket.bind('127.0.0.1', 4040);
-  final clients = <WebSocket>[];
+  final server = await HttpServer.bind('127.0.0.1', 8080);
+  final clients = <WebSocket>{};
 
   print('Chat server is running on ${server.address}:${server.port}');
 
-  await for (var client in server) {
-    WebSocketTransformer.upgrade(client).then((webSocket) {
-      print('New client connected');
-      clients.add(webSocket);
+  await for (var request in server) {
+    try {
+      if (WebSocketTransformer.isUpgradeRequest(request)) {
+        final webSocket = await WebSocketTransformer.upgrade(request);
+        print('New client connected');
+        clients.add(webSocket);
 
-      webSocket.listen((message) {
-        print('Received: $message');
-        for (var otherClient in clients) {
-          if (otherClient != webSocket) {
-            otherClient.add(message);
-          }
-        }
-      }, onDone: () {
-        print('Client disconnected');
-        clients.remove(webSocket);
-      });
-    });
+        _startListening(webSocket, clients);
+      }
+    } catch (e) {
+      print('Error during WebSocket upgrade: $e');
+    }
   }
 }
+
+void _startListening(WebSocket webSocket, Set<WebSocket> clients) {
+  webSocket.listen(
+    (message) {
+      print('Received: $message');
+      _broadcastMessage(message, clients, webSocket);
+    },
+    onDone: () {
+      print('Client disconnected');
+      clients.remove(webSocket);
+    },
+  );
+}
+
+void _broadcastMessage(String message, Set<WebSocket> clients, WebSocket sender) {
+  for (var client in clients) {
+    if (client != sender) {
+      client.add(message);
+    }
+  }
+}
+
 
 // Client
 import 'dart:io';
+import 'dart:convert'; // Import the 'dart:convert' library for utf8
 
 void main() async {
-  final socket = await WebSocket.connect('ws://127.0.0.1:4040');
-  print('Connected to the chat server');
+  final socket = await WebSocket.connect('ws://localhost:8080');
 
-  socket.listen((message) {
-    print('Received: $message');
-  });
+  socket.listen(
+    (message) {
+      print('Received: $message');
+    },
+    onDone: () {
+      print('Server disconnected');
+      exit(0);
+    },
+  );
 
-  var input = '';
-  while (input != '/quit') {
-    input = stdin.readLineSync() ?? '';
-    socket.add(input);
+  await _readUserInput(socket);
+}
+
+Future<void> _readUserInput(WebSocket socket) async {
+  final stdinStream = stdin.transform(utf8.decoder).transform(LineSplitter());
+
+  await for (var line in stdinStream) {
+    socket.add(line);
   }
 }
+
 ```
 :::
 
