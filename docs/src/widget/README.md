@@ -192,7 +192,7 @@ This will be composed of 3 pages, each page must be a rectangle of
 different colors.
 A number must be displayed centered in the middle of the page, this number must not move when scrolling on the PageView, this number must indicate the number of the active page of the PageView (see: video).
 
-![PageView](../assets/videos/pageview.mp4)
+![PageView](../assets/videos/pageview.gif)
 
 4. **BottomNavigation + Appbar**
 
