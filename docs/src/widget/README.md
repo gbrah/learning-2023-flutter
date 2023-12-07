@@ -201,13 +201,14 @@ List<Item> getRandomItem() {
 
 ### Exercise 3 - Create a detail page of one item with 'PageView'
 
-The goal of this part is to set up a PageView as the first cell of the list created in Part 2.
+The goal of this part is to set up a PageView as the first cell of the list created in exercise 2.
  
 This will be composed of 3 pages, each page must be a rectangle of different colors.
 
 A number must be displayed centered in the middle of the page, this number must not move when scrolling on the PageView, this number must indicate the number of the active page of the PageView (see: video).
 
 The result is as following :
+
 ![PageView](../assets/videos/pageview.gif)
 
 ### Exercice 4 : BottomNavigation + Appbar
