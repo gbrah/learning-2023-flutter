@@ -1,17 +1,14 @@
 #  Widgets
 
-
 - What are widgets in Flutter?
 - The importance of widgets in building user interfaces.
 - Different types of widgets in Flutter.
-
 
 In Flutter, everything is a widget. Widgets are the building blocks of your app's user interface. They control what is displayed on the screen and how it responds to user interactions.
 
 Widgets are divided into two main categories: StatelessWidget and StatefulWidget. You'll learn the key differences between them and when to use each.
 
 ## Widget Tree and Element Tree
-
 
 The Widget tree represents the hierarchy of widgets in your app. Each widget is a part of this tree. When changes occur, Flutter creates a new Widget tree. The Element tree, on the other hand, represents the corresponding elements for each widget in the Widget tree.
 
@@ -698,5 +695,404 @@ class _MainScreenState extends State<MainScreen> {
 }
 ```
 ::: 
+
+
+## Create widgets for the Quiz
+
+### 🧪 WelcomeScreen
+
+![elcome Screen preview](../assets/images/welcomescreen.png)
+
+You can now create your first view.
+For the Quiz we need a welcome screen displaying a Card centered with a button inside to start the quiz
+It is simply compose of the following composables :
+* a Card  rounded shape container
+* a Text 
+* a Button
+
+* Create a new widget `welcome_screen.dart`  
+* Make sure that the MyApp() widget is calling it
+
+```dart
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Quiz app',
+      theme: ThemeData(
+        primarySwatch: Colors.blue
+      ),
+      home: const WelcomeScreen(),
+    );
+  }
+}
+```
+* Run you first widget on all platforms , it should work. 
+
+### 🎯 Solutions
+
+::: details welcome_screen.dart
+```dart
+import 'package:flutter/material.dart';
+import 'package:quiz/question_screen.dart';
+
+class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: IntrinsicHeight(
+            child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'Quiz',
+                      style: TextStyle(
+                        fontSize: 30.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 10.0),
+                    const Text(
+                      'A simple Quiz to discover Flutter widgets',
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 10.0),
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: const Text('Start the Quiz'),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+```
+:::
+
+### 🧪 ScoreScreen
+
+![Score Screen preview](../assets/images/scorescreen.png)
+
+The second view will be quite similar but able de show final scores
+
+
+* Create a new composable `score_screen.dart` on commonMain module 
+* Make sure that the MayApp() widget is using it has below 
+* The composable will have a `String` value as parameter
+
+```dart
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Quiz app',
+      theme: ThemeData(
+        primarySwatch: Colors.blue
+      ),
+      home: const ScoreScreen("10/20"),
+    );
+  }
+}
+```
+
+* Run you first view on all platforms , it should work. 
+
+### 🎯 Solutions
+
+::: details score_screen.dart
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:quiz/question_screen.dart';
+
+class ScoreScreen extends StatelessWidget {
+  final String score;
+
+  const ScoreScreen({super.key, required this.score});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: IntrinsicHeight(
+            child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              color: Colors.green,
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'Score',
+                      style: TextStyle(
+                        fontSize: 15.0,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Text(
+                      score,
+                      style: const TextStyle(
+                        fontSize: 30.0,
+                        color: Colors.white,
+                      ),
+                    ),
+                    const SizedBox(height: 20.0),
+                    ElevatedButton.icon(
+                      onPressed: () { },
+                      icon: const Icon(Icons.refresh),
+                      label: const Text('Retake the Quiz'),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
+:::
+
+### 🧪 QuestionScreen
+
+#### Data classes for Quiz modeling
+
+![class_diagram](../assets/images/uml.png)  
+
+::: details Answer.dart
+```dart
+class Answer {
+  int id;
+  String label;
+  Answer({
+    required this.id,
+    required this.label,
+  });
+}
+```
+:::
+
+::: details Question.dart
+```dart
+class Question {
+  int id;
+  String label;
+  int correctAnswerId;
+  List<Answer> answers;
+
+  Question({
+    required this.id,
+    required this.label,
+    required this.correctAnswerId,
+    required this.answers,
+  });
+
+   }
+
+```
+:::
+
+
+::: details Quiz.dart 
+```dart
+class Quiz {
+  List<Question> questions;
+  Quiz({required this.questions});
+}
+```
+:::
+
+#### Make the widget statefull
+
+Now we can make a widget with interactions.
+
+![quiscreen](../assets/images/quizscreen.png)  
+
+The screen is composed of  : 
+* The question label in a `Card`
+* Single choice answer component with `Radio`
+* A `Button` to submit the answer
+* A `LinearProgressIndicator` indicating the quiz progress
+
+After creating the UI view, we can pass to this composable the list of questions.
+When the `MyApp`widget will create `questionScreen()` composable you will  mock questions data for now to generate the list of questions.
+
+
+### 🎯 Solutions
+
+::: details question_screen.dart 
+```dart 
+import 'package:flutter/material.dart';
+import 'package:quiz/data.dart';
+import 'package:quiz/score_screen.dart';
+import 'package:quiz/network.dart';
+
+
+class QuestionScreen extends StatefulWidget {
+  final List<Question> questions;
+  const QuestionScreen({Key? key, required this.questions}) : super(key: key);
+
+
+  @override
+  State<QuestionScreen> createState() => _QuestionScreenState();
+}
+
+class _QuestionScreenState extends State<QuestionScreen> {
+
+  int questionProgress = 0;
+  int selectedAnswer = 1;
+  int score = 0;
+
+  void _nextOrDone() {
+    if (selectedAnswer == widget.questions[questionProgress].correctAnswerId) {
+      setState(() {
+        score++;
+      });
+    }
+    if (questionProgress < widget.questions.length - 1) {
+      setState(() {
+        questionProgress++;
+        selectedAnswer = 1;
+      });
+    } else {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) =>
+              ScoreScreen(score: '$score/${widget.questions.length}'), // Pass score here
+        ),
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+            body: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                    margin: const EdgeInsets.all(60.0),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Text(
+                        widget.questions[questionProgress].label,
+                        style: const TextStyle(fontSize: 25.0),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: widget.questions[questionProgress].answers
+                        .map(
+                          (answer) => Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Radio(
+                                  value: answer.id,
+                                  groupValue: selectedAnswer,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      selectedAnswer = value as int;
+                                    });
+                                  },
+                                ),
+                                const SizedBox(
+                                    width:
+                                        8), // Adjust the spacing here if needed
+                                Text(
+                                  answer.label,
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
+                        .toList(),
+                  ),
+                ],
+              ),
+            ),
+            floatingActionButton: FloatingActionButton(
+              onPressed: () {_nextOrDone();},
+              child: questionProgress < widget.questions.length - 1
+                  ? const Icon(Icons.arrow_forward)
+                  : const Icon(Icons.done),
+            ),
+            bottomNavigationBar: LinearProgressIndicator(
+              value: (questionProgress + 1) / widget.questions.length,
+              minHeight: 20.0,
+            ),
+          );
+        }
+      }
+
+```
+:::
+
+::: main.dart 
+```dart 
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Quiz app',
+      theme: ThemeData(
+        primarySwatch: Colors.blue
+      ),
+      home: const QuestionScreen(generateMockQuestionListHere()),
+    );
+  }
+}
+```
+:::
+
+Your Quiz have now all his composable screens made. Let's connect it to the Internet
+
 
 ## 📖 Further reading

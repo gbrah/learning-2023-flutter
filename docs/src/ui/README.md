@@ -1,5 +1,29 @@
 # Getting Started 
 
+## Hands-on Lab objectives
+
+![capture](../assets/images/overview.png)
+
+### Functionnally
+
+We will create a simple quiz application that provides :
+- a Startup screen explaining rules of the game
+- a Quiz screen looping on single choices questions
+- a final scoring screen.
+
+### Technically
+
+- The app can be deployed on Android , iOS and jvm Desktop.
+- We will use not only a common library but composable views shared for all platforms
+
+
+### Design screens
+
+Here are expected screens at the end of this Hands-on Lab.
+
+![screens](../assets/images/screens.png)
+
+
 ## 🧪 SDK & IDE
 
 You'll get an overview of what the Flutter SDK is and its significance in app development. We'll provide detailed installation instructions for various operating systems, ensuring that you have a fully functional Flutter environment.
@@ -7,6 +31,8 @@ You'll get an overview of what the Flutter SDK is and its significance in app de
 Selecting the right IDE is crucial for Flutter development. We'll introduce you to the most popular choices and guide you through installing and configuring : 
 * Android Studio with the Flutter plugin
 * Visual Studio Code with Dart and Flutter extensions. 
+* [Zapp.run](https://zapp.run/) : a cloud IDE for flutter !
+
 
 
 ## 🧪 Hello World !
@@ -289,8 +315,10 @@ class ZooEntranceScreen extends StatelessWidget {
 ```
 ::: 
 
+
 ## 📖 Further reading
 
 * [Basic wigets catalaog](https://docs.flutter.dev/ui/widgets/basics)
+*[Top Flutter / Dart package of 2023](https://blog.flutter.wtf/top-flutter-dart-packages-in-2023/)
 
 
