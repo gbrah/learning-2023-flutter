@@ -54,3 +54,5 @@ You'll dive into the practical aspects of SQLite in Flutter. Learn how to create
 
 ## 📖 Further reading
 
+- [SQLite](https://docs.flutter.dev/cookbook/persistence/sqlite)
+- [SharedPrefs](https://docs.flutter.dev/cookbook/persistence/key-value)
