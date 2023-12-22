@@ -23,6 +23,29 @@ To navigate between different screens in your app, you need to declare and defin
 
 Named routes offer a structured way to navigate between screens in Flutter. This lesson guides you through using named routes for navigation, passing data and parameters to named routes, and customizing route transitions and animations.
 
+```dart
+
+@override
+  Widget build(BuildContext context) {
+  return MaterialApp(
+    initialRoute: '/',
+    routes: {
+      '/': (context) => HomeScreen(),
+      '/details': (context) => DetailScreen(),
+    },
+  );
+}
+```
+
+
+## Navigate between screens 
+```dart
+onPressed: () {
+  // Navigate to the second screen using a named route.
+  Navigator.pushNamed(context, '/details');
+}
+
+```
 
 ## Transmitting Data 
 
@@ -32,6 +55,65 @@ Named routes offer a structured way to navigate between screens in Flutter. This
 
 
 Passing data between routes is a common requirement in app development. This lesson covers the use of route parameters for data transmission, strategies for handling complex data sharing between screens, and best practices for data validation and error handling.
+
+
+Create a screen argument class 
+
+```dart
+class ScreenArguments {
+  final String title;
+  final String message;
+
+  ScreenArguments(this.title, this.message);
+}
+````
+
+
+Prepare the widget for taking argument param
+```dart
+// A Widget that extracts the necessary arguments from
+// the ModalRoute.
+class ExtractArgumentsScreen extends StatelessWidget {
+  const ExtractArgumentsScreen({super.key});
+
+  static const routeName = '/extractArguments';
+
+  @override
+  Widget build(BuildContext context) {
+    // Extract the arguments from the current ModalRoute
+    // settings and cast them as ScreenArguments.
+    final args = ModalRoute.of(context)!.settings.arguments as ScreenArguments;
+
+    return Scaffold(...
+
+```
+
+Create the route 
+```dart
+MaterialApp(
+  routes: {
+    ExtractArgumentsScreen.routeName: (context) =>
+        const ExtractArgumentsScreen(),
+  },
+)
+```
+
+Use it
+```dart
+onPressed: () {
+    // When the user taps the button,
+    // navigate to a named route and
+    // provide the arguments as an optional
+    // parameter.
+    Navigator.pushNamed(
+      context,
+      ExtractArgumentsScreen.routeName,
+      arguments: ScreenArguments(
+        'Extract Arguments Screen',
+        'This message is extracted in the build method.',
+      ),
+    );
+```
 
 ## State Management for Routes
 
