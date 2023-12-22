@@ -136,3 +136,6 @@ Effective state management between routes is essential for maintaining a consist
 ::: 
 
 ## 📖 Further reading
+
+- [Navigation](https://docs.flutter.dev/ui/navigation)
+- [Pass Arguments with navigation](https://docs.flutter.dev/cookbook/navigation/navigate-with-arguments)
