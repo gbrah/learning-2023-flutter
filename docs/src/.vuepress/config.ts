@@ -7,14 +7,14 @@ import { defineUserConfig } from "vuepress";
 
 export default defineUserConfig({
   
-  base: "/learning-flutter/",
+  base: "/learning-2023-flutter/",
   port: 3000,
 
   head: [
-    ["link", { rel: "icon", href: "/learning-flutter/favicon.ico" }],
+    ["link", { rel: "icon", href: "/learning-2023-flutter/favicon.ico" }],
     [
       "link",
-      { rel: "manifest", href: "/learning-flutter/manifest.webmanifest" },
+      { rel: "manifest", href: "/learning-2023-flutter/manifest.webmanifest" },
     ],
     ["meta", { name: "theme-color", content: "#027DFD" }],
   ],
@@ -37,7 +37,7 @@ export default defineUserConfig({
 
   plugins: [
     seoPlugin({
-      hostname: "https://worldline.github.io/gbrah/learning-flutter",
+      hostname: "https://worldline.github.io/gbrah/learning-2023-flutter",
     }),
   ],
 });

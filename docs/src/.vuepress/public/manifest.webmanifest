@@ -2,8 +2,8 @@
   "theme_color": "#f635a4",
   "background_color": "#e8d4f2",
   "display": "standalone",
-  "scope": "/learning-flutter/",
-  "start_url": "/learning-flutter/index.html",
+  "scope": "/learning-2023-flutter/",
+  "start_url": "/learning-2023-flutter/index.html",
   "name": "Flutter training",
   "short_name": "Flutter training",
   "icons": [
