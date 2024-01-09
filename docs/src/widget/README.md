@@ -76,6 +76,10 @@ class _MyAppState extends State<MyApp> {
 |  They will be rendered once and will not update themselves, but will only be updated when external data changes.  | They can re-render if the input data changes or if Widget’s state changes. |
 |  For Example, Text, Icon, and RaisedButton are Stateless Widgets.   | For Example Checkbox, Radio Button, and Slider are Stateful Widgets |
 
+## Lifecycle
+
+![Widget lifecycle](../assets/images/lifecycle.png)
+
 ## Passing Data Between Widgets
 
 In complex apps, different widgets often need to share data. We'll discuss various methods for passing data between widgets, including constructor arguments, callback functions, and InheritedWidget.

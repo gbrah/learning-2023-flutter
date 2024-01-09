@@ -42,14 +42,29 @@ You'll dive into the practical aspects of SQLite in Flutter. Learn how to create
 
 ## 🧪 Exercices 
 
-```dart
-```
+Implement the database for the quiz respecting the following clean architecture repository pattern : 
+
+* First app launch with network: 
+   - With network: Make an API request and store in the database.
+   - Without network: Generate a mock list of questions.
+* First app launch without network:
+   - Return data from the database.
+* App launch without network:
+   - Return data from the database.
+* App launch with network, with the last request within 5 minutes:
+   - Return data from the database.
+* App launch with network, with the last request over 5 minutes ago:
+  - Make an API request, return the data, and store in the database.
+
+The database should be as follow
+![Quiz Database](../assets/images/bdd.png)
+
+You can store the time 
 
 ## 🎯 Solutions
 
 ::: details click here to view the solutions
-```dart
-```
+final source code is https://github.com/gbrah/learning-src-2023-flutter
 ::: 
 
 ## 📖 Further reading
