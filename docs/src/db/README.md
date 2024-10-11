@@ -64,7 +64,7 @@ You can store the time
 ## 🎯 Solutions
 
 ::: details click here to view the solutions
-final source code is https://github.com/gbrah/learning-src-2023-flutter
+
 ::: 
 
 ## 📖 Further reading

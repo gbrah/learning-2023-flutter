@@ -1076,7 +1076,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
 ```
 :::
 
-::: main.dart 
+::: details main.dart 
 ```dart 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

@@ -1,0 +1,162 @@
+Let's start
+    Prerequisites
+    Introduction
+    What is Flutter?
+    Flutter's History
+    Flutter platforms support
+    The Flutter Architecture
+
+
+DART language
+Basics
+    Types
+    Control Flow
+    Null Safety
+    Exceptions
+    Functions
+    Single line fuction
+    Lambda/Anonymous function
+    Higher-Order Functions
+IDE : SDK or DartPad
+Advanced features
+    async/await functions
+    Future
+    Isolates
+    Streams
+    Mixin
+
+Getting Started
+    Project Structure
+    Main function
+    Writing Your First Flutter App
+    Executing Your Flutter App
+    Material App
+    Widget
+    Project structure
+    lib folder
+    pubspec.yml
+    Debugging and Testing Tools
+    Adding Plugins to Your Project
+
+
+Widgets
+    Widget Tree and Element Tree
+    Overview of Widgets and Layout
+    Classifications of Widgets: Stateful and Stateless
+    Stateless Widgets
+    Stateful Widgets
+    Difference between Stateful and Stateless Widgets
+    Lifecycle
+    Passing Data Between Widgets
+    Resource Management
+    Material Design and Cupertino Widgets
+
+Async & Network
+    Managing Asynchronous Programming
+    Futures and FutureBuilder
+    Streams and StreamBuilder
+    Connect my Quizz to the internet
+    Making HTTP Requests on RESTful APIs
+
+Navigation
+    Routes : definition
+    Declaring Routes
+    Navigate between screens
+    Transmitting Data
+    State Management for Routes
+
+Persistence
+    Shared Preferences
+    Definition
+    usage
+    File I/O
+    Database
+
+Advanced
+    Internationalization
+    Accessibility
+    Architectural Patterns
+    Native Code Binding
+
+
+    --------------
+
+    Commençons
+    Prérequis
+    Introduction
+    Qu'est-ce que Flutter ?
+    Histoire de Flutter
+    Support des plateformes Flutter
+    L'architecture de Flutter
+
+Langage DART
+  Bases
+    Types
+    Contrôle de flux
+    Sécurité des nulls
+    Exceptions
+    Fonctions
+    Fonction sur une seule ligne
+    Fonction lambda/anonyme
+    Fonctions de haut niveau
+
+  IDE : SDK ou DartPad
+
+  Fonctionnalités avancées
+    Fonctions async/await
+    Future
+    Isolates
+    Streams
+    Mixin
+
+Premiers pas
+    Structure du projet
+    Fonction principale
+    Écrire votre première application Flutter
+    Exécuter votre application Flutter
+    Application Material
+    Widget
+    Structure du projet
+    Dossier lib
+    pubspec.yml
+    Outils de débogage et de test
+    Ajouter des plugins à votre projet
+
+Widgets
+    Arbre de widgets et arbre d'éléments
+    Vue d'ensemble des widgets et de la mise en page
+    Classification des widgets : Stateful et Stateless
+    Widgets Stateless
+    Widgets Stateful
+    Différence entre les widgets Stateful et Stateless
+    Cycle de vie
+    Passer des données entre les widgets
+    Gestion des ressources
+    Widgets Material Design et Cupertino
+
+Async & Réseau
+    Gestion de la programmation asynchrone
+    Futures et FutureBuilder
+    Streams et StreamBuilder
+    Connecter mon Quiz à Internet
+    Faire des requêtes HTTP sur des API RESTful
+
+Navigation
+    Routes : définition
+    Déclaration des routes
+    Navigation entre les écrans
+    Transmission de données
+    Gestion d'état pour les routes
+
+Persistance
+    Préférences partagées
+    Définition
+    Utilisation
+    Entrée/Sortie de fichiers
+    Base de données
+
+Avancé
+    Internationalisation
+    Accessibilité
+    Modèles architecturaux
+    Liaison de code natif
