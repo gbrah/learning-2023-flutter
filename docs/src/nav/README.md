@@ -44,7 +44,6 @@ onPressed: () {
   // Navigate to the second screen using a named route.
   Navigator.pushNamed(context, '/details');
 }
-
 ```
 
 ## Transmitting Data 
@@ -66,7 +65,7 @@ class ScreenArguments {
 
   ScreenArguments(this.title, this.message);
 }
-````
+```
 
 
 Prepare the widget for taking argument param
@@ -85,7 +84,6 @@ class ExtractArgumentsScreen extends StatelessWidget {
     final args = ModalRoute.of(context)!.settings.arguments as ScreenArguments;
 
     return Scaffold(...
-
 ```
 
 Create the route 
@@ -132,6 +130,7 @@ Effective state management between routes is essential for maintaining a consist
 
 ::: details click here to view the solutions
 ```dart
+[Github repository sources](https://github.com/ibrahim-kasra/flutter-app-dev-course)
 ```
 ::: 
 
