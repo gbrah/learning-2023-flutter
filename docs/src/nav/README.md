@@ -129,9 +129,7 @@ Effective state management between routes is essential for maintaining a consist
 ## 🎯 Solutions
 
 ::: details click here to view the solutions
-```dart
 [Github repository sources](https://github.com/ibrahim-kasra/flutter-app-dev-course)
-```
 ::: 
 
 ## 📖 Further reading
