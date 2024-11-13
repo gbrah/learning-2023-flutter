@@ -67,3 +67,10 @@ Learn how to implement and use native modules in Flutter.
 - Using native modules in your Flutter app.
 
 Implementing native modules involves writing native code, creating platform-specific APIs, and integrating these modules into your Flutter app. This lesson provides practical guidance on how to develop and use native modules effectively.
+
+
+## 📖 Further reading
+
+- [Code generation with Freezed](https://pub.dev/packages/freezed)
+- [bloc](https://github.com/felangel/bloc)
+- [A clean architecture for Flutter](https://github.com/bugragoksu/flutter_clean_architecture)
