@@ -117,9 +117,10 @@ Retrieve the previous Quiz data and create a widget statefull with future builde
 
 ## 🎯 Solutions
 
-::: details click here to view the solutions
-
+::: details Solutions
+[Zapp.run project with http request](https://zapp.run/edit/quiz-z9q06jl9r06)
 ::: 
+
 
 ## 📖 Further reading
 

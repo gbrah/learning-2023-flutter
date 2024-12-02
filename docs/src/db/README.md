@@ -63,9 +63,9 @@ You can store the time
 
 ## 🎯 Solutions
 
-::: details click here to view the solutions
-[Zapp.run project with http request](https://zapp.run/edit/quiz-z9q06jl9r06)
-::: 
+::: details Solution
+[Github repository sources](https://github.com/gbrah/learning-src-2023-flutter)
+:::
 
 ## 📖 Further reading
 

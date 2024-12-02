@@ -123,12 +123,13 @@ Effective state management between routes is essential for maintaining a consist
 
 ## 🧪 Exercices 
 
-```dart
-```
+Add navigation to the Quiz Application.
 
 ## 🎯 Solutions
 
-[Github repository sources](https://github.com/ibrahim-kasra/flutter-app-dev-course)
+::: details Solution
+[Github repository sources](https://github.com/gbrah/learning-src-2023-flutter)
+:::
 
 ## 📖 Further reading
 
