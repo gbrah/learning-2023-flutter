@@ -196,26 +196,18 @@ void main() {
 ### Lambda/Anonymous function 
 
 ```dart
-const list = ['apples', 'bananas', 'oranges'];
+  // assign lambda function to a variable
+  var add = (int first, int second) => first + second;
+  print(add(10, 20));
 
-list.map(
-  // the lamda passed in parameter
-  (item) {
-  return item.toUpperCase();
-   }
-).forEach(
-  // second lamdas
-  (item) {
-  print('$item: ${item.length}');
-  }
-);
-```
-Even shorter if you have only one instruction:
+//  closure function without arrow syntax
+  var add1 = (int first, int second) {
+    return first + second;
+  };
+  print(add1(10, 20));
 
-```dart
-list
-    .map((item) => item.toUpperCase())
-    .forEach((item) => print('$item: ${item.length}'));
+// use your lambda function in map function able to iterate over a list
+list.map((item) => item.toUpperCase()).forEach((item) => print('$item: ${item.length}'));
 ```
 
 ### Higher-Order Functions
@@ -223,7 +215,6 @@ list
 Higher-order functions take one or more functions as arguments or return a function as a result. Here's an example of a higher-order function that applies a function to a list of values
 
 ``` dart
-
 int applyFunctionToValues(List<int> values, int Function(int, int) func) {
   int result = 0;
   for (final value in values) {

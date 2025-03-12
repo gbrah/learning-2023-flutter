@@ -16,7 +16,6 @@ We will create a simple quiz application that provides :
 - The app can be deployed on Android , iOS and jvm Desktop.
 - We will use not only a common library but composable views shared for all platforms
 
-
 ### Design screens
 
 Here are expected screens at the end of this Hands-on Lab.
@@ -38,9 +37,6 @@ Selecting the right IDE is crucial for Flutter development. We'll introduce you 
 ## 🧪 Hello World !
 
 Create a simple "Hello, Flutter" app as your first Flutter project.
-
-
-
 
 ## Project Structure
 
