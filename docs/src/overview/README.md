@@ -22,6 +22,18 @@ Before developing in Flutter, it's beneficial to have some prerequisites and a f
 
 ## Introduction
 
+
+### Mobile contraints 
+
+| OS (Operating System)                                    | Mobile OS                                               |
+|----------------------------------------------------------|---------------------------------------------------------|
+| Link hardware and software                               | Battery                                                 |
+| HMI: Human-Machine Interface                             | Touch screen, virtual keyboard, screen size             |
+| Perform calculations, execute calculations, provide services | Sensors (gyroscope, NFC, light meter, GPS chip, GSM chip, …) |
+| Enigma, punched card, terminal, command-line interface, graphical interface | (Power) <= no longer relevant, PCs now even have ARM chips |
+|                                                          | Ubiquity                                                |
+|                                                          | Security                                                |
+
 ### What is Flutter?
 
 Flutter is a groundbreaking open-source UI framework developed by Google that allows developers to build high-quality, natively compiled applications for various platforms, including mobile, web, and desktop, using a single codebase. Flutter's primary advantage lies in its extensive library of customizable widgets, which enables developers to create stunning and highly performant user interfaces.
