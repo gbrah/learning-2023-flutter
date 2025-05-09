@@ -69,6 +69,31 @@ Learn how to implement and use native modules in Flutter.
 Implementing native modules involves writing native code, creating platform-specific APIs, and integrating these modules into your Flutter app. This lesson provides practical guidance on how to develop and use native modules effectively.
 
 
+## 📱 Project: Creating a Flutter Application
+
+Propose and develop an application of your choice in Flutter, with support for at least 2 platforms (e.g. Android and iOS).
+You must have all your functionalities validated by the **MONTH , YEAR** session at the latest (if you don't, you risk going off-topic during the defense).
+The list of functionalities must be detailed in a document/schema with priorities.
+
+Your application should include the following technical elements:
+
+1. Custom widgets based on material or cupertino
+2. One or 2 animations
+3. One or more calls to a REST API (e.g. OpenWeather, PokeAPI, etc.)
+4. Local storage (e.g. SharedPreferences AND SQLite, etc.)
+
+Your project presentation will take place on **MONTH , YEAR** and will last 15 minutes.
+The project is to be carried out alone.
+
+Your presentation will be based on a medium of your choice and should present :
+
+1. A description of the initially chosen functionalities (originality and complexity will be taken into account) /5
+2. A summary of what has been achieved, including a technical explanation and any difficulties encountered /5
+   3. a demo of the application /5
+3. A series of technical questions from the teacher /5
+
+Translated with DeepL.com (free version)
+
 ## 📖 Further reading
 
 - [Code generation with Freezed](https://pub.dev/packages/freezed)
