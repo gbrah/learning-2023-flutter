@@ -76,6 +76,196 @@ class _MyAppState extends State<MyApp> {
 |  They will be rendered once and will not update themselves, but will only be updated when external data changes.  | They can re-render if the input data changes or if Widget’s state changes. |
 |  For Example, Text, Icon, and RaisedButton are Stateless Widgets.   | For Example Checkbox, Radio Button, and Slider are Stateful Widgets |
 
+## More Flutter Widgets
+
+### RepaintBoundary
+
+The RepaintBoundary widget helps performance by only redrawing the part of the screen inside it. It creates a separate layer so updates inside that area don’t cause the whole screen to redraw.
+
+Using RepaintBoundary can significantly improve the performance of Flutter applications. Here are some key benefits:
+- Improves Rendering Performance: Reduces the number of widgets that need to be repainted.
+- Optimizes Complex UI Components: Ideal for widgets that require frequent updates but should not trigger global repaints.
+- Prevents UI Jitter: Keeps animations and scrolling smooth by isolating dynamic UI elements.
+- Enhances Battery Efficiency: Reducing unnecessary computations helps conserve device resources.
+- Boosts App Responsiveness: Ensures that frequently updating elements do not slow down user interactions.
+- Supports Efficient Widget Structuring: Helps structure Flutter applications for better performance and maintainability.
+
+Basic Implementation :
+
+```dart
+ListView.builder(
+  itemCount: 50,
+  itemBuilder: (context, index) {
+    return ListTile(
+      leading: RepaintBoundary(
+        child: Image.network(
+          'https://example.com/image_\$index.jpg',
+          width: 50,
+          height: 50,
+          fit: BoxFit.cover,
+        ),
+      ),
+      title: Text('Item \$index'),
+    );
+  },
+)
+```
+
+RepaintBoundary ensures that only the rotating widget or image repaints when updated. This prevents the entire list from repainting, leading to better performance.
+
+### SnapshotWidget
+
+The SnapshotWidget transforms complex, expensive-to-draw widgets into static, non-interactive images. Think of it as taking a screenshot of a widget once captured; Flutter no longer needs to redraw it on every frame.
+
+You should reach for SnapshotWidget when you have graphically complex UI elements (custom drawings, charts, complicated widget stacks) that don’t change frequently.
+
+Basic Implementation :
+```dart
+SnapshotWidget(
+  controller: controller,
+  child: const ExpensiveCircleGrid(),
+)
+```
+
+### LayerLink
+
+LayerLink creates an invisible connection between widgets, allowing one (the follower) to position itself relative to another (the target) even when they're not parent-child.
+
+Basic Implementation :
+```dart
+final LayerLink _layerLink = LayerLink();
+CompositedTransformTarget(
+  link: _layerLink,
+  child: YourButton(),
+)
+CompositedTransformFollower(
+  link: _layerLink,
+  targetAnchor: Alignment.bottomLeft,
+  child: YourDropdown(),
+)
+```
+
+Perfect for dropdown menus, tooltips, and custom overlays that need to track another widget’s position.
+
+###  TickerMode
+
+The TickerMode widget is a performance optimization tool that controls whether animations are running in a specific part of your app's widget tree. By wrapping widgets with TickerMode, you can enable or disable all animations (like those driven by AnimationController) for that widget and all of its descendants.
+
+Basic Implementation :
+```dart
+TickerMode(
+  enabled: false, // Disables all animations in the subtree
+  child: AnimatedContainer(
+    duration: Duration(seconds: 1),
+    color: isBlue ? Colors.blue : Colors.red,
+    child: Text('This animation is paused!'),
+  ),
+)
+```
+
+### SensitiveContent
+
+The SensitiveContent widget is a security-focused widget introduced for Android 15+ that marks parts of your UI as containing sensitive information. Its primary purpose is to signal to the operating system that the screen should be obscured during screen sharing or screen recording to protect user privacy.
+
+Basic Implementation :
+```dart
+SensitiveContent(
+  sensitivityLevel: ContentSensitivity.sensitive,
+  child: TextField(
+    obscureText: true,
+    decoration: InputDecoration(
+      labelText: 'Password',
+      hintText: 'Enter your password',
+    ),
+  ),
+)
+```
+
+The SensitiveContent widget supports three sensitivity levels:
+
+- ContentSensitivity.sensitive: The highest priority setting that ensures the screen remains obscured
+- ContentSensitivity.autoSensitive: Second priority, relies on system heuristics to determine sensitivity
+- ContentSensitivity.notSensitive: Lowest priority, explicitly marks content as not sensitive
+
+### GridPaper
+
+The GridPaper widget is like graph paper for your Flutter app. It draws a grid on the screen, which helps:
+- Align widgets.
+- Visualize spacing and layout.
+- Debug design issues.
+
+Basic Implementation :
+```dart
+GridPaper(
+  color: Colors.red,
+  interval: 100,
+  divisions: 2,
+  subdivisions: 4,
+  child: SizedBox(
+    width: 300,
+    height: 400,
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const FlutterLogo(size: 80),
+        const SizedBox(height: 20),
+        const Text('Align Me!', style: TextStyle(fontSize: 24)),
+      ],
+    ),
+  ),
+)
+```
+
+You can wrap other widgets (e.g., Container) inside the GridPaper for alignment or debugging.
+Not for Production: GridPaper is mainly a debugging or design tool.
+
+### BlockSemantics
+
+The BlockSemantics widget is an accessibility control tool that prevents screen readers from accessing individual widgets within its child tree. Think of it as placing a "Do Not Disturb" sign on a group of widgets, screen readers will see the sign and ignore everything behind it.
+
+This widget is particularly useful when you have widgets that are visually behind other widgets (like a modal dialog overlay) but are still part of the widget tree. Without BlockSemantics, screen readers might read out potentially confusing or redundant information from widgets that aren't currently relevant to the user.
+
+Basic Implementation :
+```dart
+BlockSemantics(
+  child: Container(
+    child: Column(
+      children: [
+        Text('This text will be ignored by screen readers'),
+        ElevatedButton(
+          onPressed: () {},
+          child: Text('This button will also be ignored'),
+        ),
+      ],
+    ),
+  ),
+)
+```
+
+BlockSemantics is essential for creating accessible modal experiences where you want to ensure screen reader users focus only on the relevant content and aren't distracted by background elements.
+
+### BeveledRectangleBorder
+
+The BeveledRectangleBorder is a shape class that creates rectangular shapes with angled, "cut-off" corners instead of the usual rounded or squared corners. This gives widgets a distinctive, sharp-edged appearance that's perfect for creating unique design elements with a geometric, cut-out style.
+
+Basic Implementation :
+```dart
+Container(
+  decoration: ShapeDecoration(
+    color: Colors.blue,
+    shape: BeveledRectangleBorder(
+      borderRadius: BorderRadius.circular(16),
+      side: BorderSide(color: Colors.purple, width: 2),
+    ),
+  ),
+  child: Text('Beveled Container'),
+)
+```
+
+You'll commonly use BeveledRectangleBorder with widgets like buttons, cards, and containers through their shape property to achieve that distinctive beveled look.
+
+BeveledRectangleBorder is perfect when you want to create distinctive UI elements that stand out from the typical rounded rectangle aesthetic. It's particularly effective in design systems that favor geometric, angular styles.
+
 ## Lifecycle
 
 ![Widget lifecycle](../assets/images/lifecycle.png)
