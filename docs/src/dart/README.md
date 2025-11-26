@@ -235,6 +235,40 @@ void main() {
 }
 ```
 
+## New Dart feature
+
+### dot shorthands syntax
+
+Dot Shorthands allow you to omit the class name when referring to a static member (like a static field, constant, or enum value) if the compiler can already determine the type from the context. It’s a massive win for reducing boilerplate and code repetition.
+
+before :
+``` dart
+Row(
+  mainAxisAlignment: MainAxisAlignment.start,
+  crossAxisAlignment: CrossAxisAlignment.center,
+  children: [
+    Text('Item 1'),
+    SizedBox(width: 8.0), // Note: SizedBox is a static const
+    Text('Item 2'),
+  ],
+);
+```
+
+after :
+``` dart
+Row(
+  mainAxisAlignment: .start, // Shorthand for MainAxisAlignment.start
+  crossAxisAlignment: .center, // Shorthand for CrossAxisAlignment.center
+  children: [
+    Text('Item 1'),
+    SizedBox(width: 8.0),
+    Text('Item 2'),
+  ],
+);
+```
+
+Dot shorthands are one of those rare language features that truly change how your code feels. Flutter widget trees become lighter. Enum-heavy logic becomes readable. Redundant constructors disappear.
+
 ##  IDE : SDK or DartPad 
 
 To write Dart code, developers have multiple options. 
