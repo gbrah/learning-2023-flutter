@@ -22,7 +22,6 @@ Before developing in Flutter, it's beneficial to have some prerequisites and a f
 
 ## Introduction
 
-
 ### Mobile contraints 
 
 | OS (Operating System)                                    | Mobile OS                                               |
@@ -62,17 +61,24 @@ Here's a brief overview of some key Flutter versions:
 
 5. **Mobile Updates:** Flutter 3 introduces several mobile updates, including support for foldable mobile devices, iOS variable refresh rate support for smoother animations, simplified iOS app releases, and a Gradle version update.
 
+::: tip Changelogs
+You can find the complete release notes and changelogs for each Flutter version at the official [Flutter documentation](https://docs.flutter.dev/release/release-notes)
+:::
+
 ### Flutter platforms support
              
-|Platform   |Supported   |Best effort	   |
-|---|---|---|
-|Android |21-34   |19-20	   |
-|iOS	16	    |11-15	    |10-, arm7v    |
-|Linux Debian   |10-12	   |9-   |
-|Linux Ubuntu   |18.04 LTS   |20.04-23.04   |
-|macOS   |Ventura (13+)   |Mojave (10.14) to Monterey (12)	   |
-|Windows	   |10   |7, 8, and 11	   |
-|Chrome - Firefox - Safari - Edge	   |latest 2 releases	   |96+ - 99+ - 14+ - 96+   |
+| Platform                        | Version supported  |
+|---------------------------------|--------------------|
+| Android                         | 24 to 36 |
+| iOS                             | 13 to 26     |
+| Chrome,Firefox,Safari                             | Latests    |
+| Windows                         | 10, 11 |
+| macOS                           | Catalina (10.15) to Tahoe (26) |
+| Linux                           | 20.04 LTS to 24.04 LTS |
+
+::: tip Supported Platforms
+You can find the complete list of supported platforms and their details at the official [Flutter documentation](https://docs.flutter.dev/reference/supported-platforms)
+:::
 
 ### The Flutter Architecture
 
