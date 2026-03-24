@@ -121,7 +121,7 @@ onPressed: () {
 
 Effective state management between routes is essential for maintaining a consistent user experience. This lesson covers techniques for sharing and managing state across routes using solutions like ScopedModel, Provider, and more. You'll learn how to prevent data loss and ensure UI consistency.
 
-## 🧪 Exercices 
+## 🧪 Exercises 
 
 Add navigation to the Quiz Application.
 

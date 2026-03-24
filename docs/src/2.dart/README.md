@@ -257,85 +257,41 @@ You can download the SDK for integrated development environment [here](https://d
 
 [DartPad](https://dartpad.dev/) is an online platform that allows you to write and run Dart code directly in your browser, making it accessible for quick experimentation.
 
-## 🧪 Exercices 
+## 🧪 Exercises 
+
+::: warning Exercice 1 - data types
+
+ * Define variables of different data types (int, double, String, List) and print their values in Dart
+
+::: tip Solution 
+
+::: details Expand
 
 ```dart
-/* Types
- * Define variables of different data types (int, double, String, List) and print their values in Dart.*/
+    void main() {
+      int age = 30;
+      double price = 19.99;
+      String name = 'Alice';
+      List<int> numbers = [1, 2, 3, 4, 5];
 
-/* Control Flow 
- * 
- * Exercise 1
+      print('Age: $age');
+      print('Price: $price');
+      print('Name: $name');
+      print('Numbers: $numbers');
+    }
+```
+:::
+
+::: warning Exercice 2 - Control Flow 
+
  * Even or Odd
  * Write a Dart program that takes an integer as input and determines if it's even or odd. 
  * Use an if-else statement to make the decision.
-*/
 
-/* Exercise 2
- * Grade Classification
- * Create a program that calculates and displays the letter grade based on a numeric score. 
- * Use a switch statement to handle different score ranges (e.g., A for 90-100, B for 80-89, etc.).
-*/
+::: tip Solution 
 
-/* Null Safety
- * Exercice 1 : 
- * Declare variables for a user's name and age, and make sure they are non-nullable. 
- * Try to assign `null` to these variables and observe the null safety error.*/
-
-/* Exercice 2
- * Create a Dart program that simulates a user management system with null safety. 
- * The goal is to manage user data, including their names, emails, and roles, while handling null values appropriately.
-*/
-
-/* Hints 
- * Define a User class to represent a user with the following properties:
- * - id 
- * - name 
- * - email 
- * - role 
- * Ensure that the class is designed with null safety in mind.
- * Implement a function printUserInfo that takes a User object as a parameter and prints their information. 
- * In the main function, create instances of the User class with various scenarios. 
- */
-
-
-/* Objects
- * Create a class `Person` with properties `name` and `age`. Write a Dart program that creates two instances of `Person` and prints their information.*/
-
-
-/* Functions
- * Write a Dart function called `calculateSum` that takes two integers as arguments and returns their sum. Call this function in your program.*/
-
-
-/* Exceptions
- * Write a Dart program that divides two numbers, but handle the exception if the denominator is zero. */ 
-
-
-/* Lambdas and Higher-Order Functions
- * Write a higher-order function called `operateOnList` that takes a list of integers and a function as parameters. 
- * The function should apply the given function to each element in the list and return a list of the results. */
-
-```
-
-## 🎯 Solutions 
-::: details click here to view the solutions
-
+::: details Expand
 ```dart
-/* Types
- * Define variables of different data types (int, double, String, List) and print their values in Dart.*/
-
-void main() {
-  int age = 30;
-  double price = 19.99;
-  String name = 'Alice';
-  List<int> numbers = [1, 2, 3, 4, 5];
-
-  print('Age: $age');
-  print('Price: $price');
-  print('Name: $name');
-  print('Numbers: $numbers');
-}
-
 /* Control Flow 
  * 
  * Exercise 1
@@ -353,13 +309,18 @@ void main() {
     print('$number is odd.');
   }
 }
+```
+:::
 
-/* Exercise 2
+::: warning Exercice 3 - Control Flow 
+
  * Grade Classification
  * Create a program that calculates and displays the letter grade based on a numeric score. 
  * Use a switch statement to handle different score ranges (e.g., A for 90-100, B for 80-89, etc.).
-*/
+::: tip Solution 
 
+::: details Expand
+```dart
 void main() {
   int score = 85;
   String grade;
@@ -384,11 +345,18 @@ void main() {
 
   print('Score: $score\nGrade: $grade');
 }
+```
+:::
 
-/* Null Safety
- * Exercice 1 : 
- * Declare variables for a user's name and age, and make sure they are non-nullable. 
- * Try to assign `null` to these variables and observe the null safety error.*/
+::: warning Exercice 4 - Null Safety
+
+ * Declare variables for a users name and age, and make sure they are non-nullable. 
+ * Try to assign `null` to these variables and observe the null safety error.
+
+::: tip Solution 
+
+::: details Expand
+```dart
 
 void main() {
   String name = 'John'; // Non-nullable, must have a value
@@ -397,23 +365,28 @@ void main() {
   // This line will result in a null safety error
   // age = null; // Error: A value of type 'Null' can't be assigned to a variable of type 'int'.
 }
+```
+:::
 
-/* Exercice 2
+::: warning Exercice 5 - Null Safety
+
  * Create a Dart program that simulates a user management system with null safety. 
  * The goal is to manage user data, including their names, emails, and roles, while handling null values appropriately.
-*/
 
-/* Hints 
  * Define a User class to represent a user with the following properties:
- * - id 
- * - name 
- * - email 
- * - role 
- * Ensure that the class is designed with null safety in mind.
- * Implement a function printUserInfo that takes a User object as a parameter and prints their information. 
+    - id 
+    - name 
+    - email 
+    - role 
+ * Ensure that the class is designed
+* Implement a function printUserInfo that takes a User object as a parameter and prints their information. 
  * In the main function, create instances of the User class with various scenarios. 
- */
 
+
+::: tip Solution 
+
+::: details Expand
+```dart
 class User {
   final int id;
   String? name;
@@ -445,10 +418,17 @@ void main() {
   printUserInfo(user3);
   printUserInfo(user4);
 }
+```
+:::
 
-/* Objects
- * Create a class `Person` with properties `name` and `age`. Write a Dart program that creates two instances of `Person` and prints their information.*/
 
+ ::: warning Exercice 6 - Objects
+
+* Create a class `Person` with properties `name` and `age`. Write a Dart program that creates two instances of `Person` and prints their information.
+::: tip Solution 
+
+::: details Expand
+```dart
 class Person {
   String name;
   int age;
@@ -463,11 +443,16 @@ void main() {
   print('Person 1: Name - ${person1.name}, Age - ${person1.age}');
   print('Person 2: Name - ${person2.name}, Age - ${person2.age}');
 }
+```
+:::
 
+ ::: warning Exercice 7 - Functions
 
-/* Functions
- * Write a Dart function called `calculateSum` that takes two integers as arguments and returns their sum. Call this function in your program.*/
+* Create a class `Person` with properties `name` and `age`. Write a Dart program that creates two instances of `Person` and prints their information.
+::: tip Solution 
 
+::: details Expand
+```dart
 int calculateSum(int a, int b) {
   return a + b;
 }
@@ -476,11 +461,16 @@ void main() {
   int result = calculateSum(5, 3);
   print('Sum: $result'); // Sum: 8
 }
+```
+:::
 
+ ::: warning Exercice 7 - Exceptions
 
-/* Exceptions
- * Write a Dart program that divides two numbers, but handle the exception if the denominator is zero. */ 
+ * Write a Dart program that divides two numbers, but handle the exception if the denominator is zero. 
+::: tip Solution 
 
+::: details Expand
+```dart
 void divideNumbers(int numerator, int denominator) {
   try {
     if (denominator == 0) {
@@ -497,12 +487,17 @@ void main() {
   divideNumbers(10, 2); // Result: 5.0
   divideNumbers(8, 0);  // An error occurred: Exception: Division by zero is not allowed.
 }
+```
+:::
 
+ ::: warning Exercice 8 - Lambdas and Higher-Order Functions
 
-/* Lambdas and Higher-Order Functions
  * Write a higher-order function called `operateOnList` that takes a list of integers and a function as parameters. 
- * The function should apply the given function to each element in the list and return a list of the results. */
+ * The function should apply the given function to each element in the list and return a list of the results. 
+::: tip Solution 
 
+::: details Expand
+```dart
 List<int> operateOnList(List<int> numbers, int Function(int) operation) {
   List<int> result = [];
   for (var number in numbers) {
@@ -611,9 +606,10 @@ void main() {
 Dart introduces advanced language features like mixins, which allow you to reuse code across multiple classes without inheritance.
 
 
-## 🧪 Exercices 
+## 🧪 Exercises 
 
-1. **Future Handling**
+
+::: warning Exercice 1 - Future Handling
 
 Write a Dart program that simulates fetching data asynchronously from a server using a Future. Create a function fetchDataFromServer that returns a 
 ``` dart
@@ -621,28 +617,11 @@ Future<String>
 ```
 representing data retrieval. Implement error handling using the catchError method and display the result when the Future is complete.
 
-2.  **Async Function**
+::: tip Solution 
 
-Create an async function called downloadData that simulates downloading a large file. Use a Future to represent the download process and await to wait for it to complete. Display a message when the download is finished.
-
-3. **Using Isolates**
-
-Write a program that uses an isolate to calculate the factorial of a number. Create a function calculateFactorial that takes an integer and returns its factorial. Use message passing to communicate with the isolate and display the result in the main thread.
-
-4. **Using MixIn**
-
-Create a mixin called Loggable that provides logging functionality to classes. The mixin should include a method log that takes a message as a parameter and prints it with a timestamp. Create a class Logger that uses the Loggable mixin to log messages. Demonstrate the use of the Loggable mixin in the Logger class to log messages.
-
-5. **Streams : Real-time Data Dashboard**
-
-Create a Dart program that simulates a real-time data dashboard using streams. The dashboard should display live data updates and visualize data in real-time. Use stream controllers and subscriptions to manage the data flow and update the dashboard interface.
-
-## 🎯 Solutions 
-
-::: details click here to view the solutions
-
-```dart 
-// Exercice 1
+::: details Expand
+```dart
+// Exercise 1
 Future<String> fetchDataFromServer() async {
   await Future.delayed(Duration(seconds: 2)); // Simulate async operation
   return 'Data from the server';
@@ -664,8 +643,18 @@ Future<void> fetchData() async {
     print('Error: $error');
   }
 }
+```
+:::
 
-//Exercice 2
+ ::: warning Exercice 2 - Async Function
+
+Create an async function called downloadData that simulates downloading a large file. Use a Future to represent the download process and await to wait for it to complete. Display a message when the download is finished.
+
+::: tip Solution 
+
+::: details Expand
+```dart
+//Exercise 2
 
 Future<void> downloadData() async {
   print('Downloading data...');
@@ -679,8 +668,20 @@ Future<void> downloadData() async {
 void main() {
   downloadData();
 }
+```
+:::
 
-// Exercice 3 
+
+ ::: warning Exercice 3 - Isolates
+
+Write a program that uses an isolate to calculate the factorial of a number. Create a function calculateFactorial that takes an integer and returns its factorial. Use message passing to communicate with the isolate and display the result in the main thread.
+
+
+::: tip Solution 
+
+::: details Expand
+```dart
+// Exercise 3 
 import 'dart:isolate';
 
 int calculateFactorial(int n) {
@@ -703,6 +704,19 @@ void isolateFunction(SendPort sendPort) {
     }
   });
 }
+```
+:::
+
+
+ ::: warning Exercice 4 - MixIn
+
+Create a mixin called Loggable that provides logging functionality to classes. The mixin should include a method log that takes a message as a parameter and prints it with a timestamp. Create a class Logger that uses the Loggable mixin to log messages. Demonstrate the use of the Loggable mixin in the Logger class to log messages.
+
+
+::: tip Solution 
+
+::: details Expand
+```dart
 
 void main() async {
   final receivePort = ReceivePort();
@@ -718,7 +732,7 @@ void main() async {
   isolate.kill();
 }
 
-// Exercice 4 
+// Exercise 4 
 mixin Loggable {
   void log(String message) {
     final timestamp = DateTime.now();
@@ -735,7 +749,19 @@ void main() {
   logger.log('Another info message.');
 }
 
-// Exercice 5 
+```
+:::
+
+ ::: warning Exercice 5 - Stream
+
+Create a Dart program that simulates a real-time data dashboard using streams. The dashboard should display live data updates and visualize data in real-time. Use stream controllers and subscriptions to manage the data flow and update the dashboard interface.
+
+
+::: tip Solution 
+
+::: details Expand
+```dart
+/ Exercise 5 
 import 'dart:async';
 
 class DataDashboard {
@@ -799,10 +825,11 @@ Create a command-line game where the player tries to guess a randomly generated 
 
 This project allows students to practice and consolidate various programming concepts while creating an entertaining game. It can be completed in a few hours and serves as a great summary of the topics covered.
 
-## 🎯 A solution 
 
-::: details click here to view a solution
-```dart 
+::: tip Solution 
+
+::: details Expand
+```dart
 import 'dart:io';
 import 'dart:math';
 
@@ -905,6 +932,8 @@ void main() {
 ```
 :::
 
+
+
 ## 🧪 Mini-project 2: Chat Application
 
 Create a real-time CLI chat application using Dart that allows multiple users to exchange messages in real-time. The application should provide the following features:
@@ -915,11 +944,10 @@ Create a real-time CLI chat application using Dart that allows multiple users to
 * Message history and chat room management.
 * Emoji support in messages.
 
-## 🎯 A solution
+::: tip Solution 
 
-::: details click here to view a solution
-
-``` dart
+::: details Expand
+```dart
 // Server
 import 'dart:io';
 
@@ -993,7 +1021,6 @@ Future<void> _readUserInput(WebSocket socket) async {
     socket.add(line);
   }
 }
-
 ```
 :::
 
@@ -1009,11 +1036,11 @@ To implement this project, you can use async/await for reading and writing tasks
 * Asynchronous Operations: Use async/await for reading and writing tasks to the file to ensure the application remains responsive while performing file operations.
 * Data Persistence: Tasks should persist between application runs. Implement reading and writing tasks to/from a text file as JSON.
 
-## 🎯 A solution 
+::: tip Solution 
 
-::: details click here to view the answer
+::: details Expand
+```dart
 
-``` dart 
 import 'dart:io';
 import 'dart:convert';
 
@@ -1078,6 +1105,8 @@ Future<void> main() async {
   }
 }
 ```
+:::
+
 
 ## 📖 Further reading
 - [Dart SDK](https://dart.dev/get-dart)

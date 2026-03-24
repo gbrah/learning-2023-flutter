@@ -161,7 +161,7 @@ Future<void> deleteQuiz(int id) async {
 }
 ```
 
-## 🧪 Exercices 
+## 🧪 Exercises 
 
 Implement the following database schema to store quiz questions and answers:
 ![Quiz Database](../assets/images/bdd.png)

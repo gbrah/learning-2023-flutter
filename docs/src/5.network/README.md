@@ -110,7 +110,7 @@ import 'package:http/http.dart' as http;
 <uses-permission android:name="android.permission.INTERNET" />
 ````
 
-## 🧪 Exercices 
+## 🧪 Exercises 
 
 Retrieve the previous Quiz data and create a widget statefull with future builder to show a list of questions retrieved from internet.
 

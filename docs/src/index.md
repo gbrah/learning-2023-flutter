@@ -5,7 +5,7 @@ heroText:  Hands-on Lab - Flutter
 tagline: Discover Flutter in practice.
 actions:
   - text: Start the Hands-on Lab →
-    link: /overview/
+    link: /1.overview/
     type: primary
 features:
   - title: 1. Introduction

@@ -102,7 +102,7 @@ You'll discover how to load and display images in your Flutter app. We'll also e
 
 Flutter provides two main design languages: Material Design and Cupertino. You'll explore the widgets associated with each and learn when to use one over the other based on platform-specific design guidelines.
 
-## 🧪 Exercices 
+## 🧪 Exercises 
 
 ### Exercise 1 - Build a form with validation
 
@@ -212,9 +212,9 @@ The result is as following :
 
 ![PageView](../assets/videos/pageview.gif)
 
-### Exercice 4 : BottomNavigation + Appbar
+### Exercise 4 : BottomNavigation + Appbar
 
-The goal of this part is to set up a BottomNavigationBar allowing you to navigate between the screens created in Exercice 1 and 2 and an AppBar : 
+The goal of this part is to set up a BottomNavigationBar allowing you to navigate between the screens created in Exercise 1 and 2 and an AppBar : 
 
 * The AppBar title must adapt to the displayed screen.
 * AppBar buttons must contain an icon and a label.

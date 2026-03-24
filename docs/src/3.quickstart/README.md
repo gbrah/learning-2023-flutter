@@ -40,9 +40,16 @@ Create a simple "Hello, Flutter" app as your first Flutter project.
 
 ## Project Structure
 
-To become proficient in Flutter, you need to understand the essential components of a Flutter app. We'll dive into the `main` function and explain its significance. You'll also learn about the MaterialApp widget and how widgets, along with widget trees, play a pivotal role in building Flutter apps.
+To become proficient in Flutter, you need to understand the essential components of a Flutter app. 
 
-A well-structured Flutter project is essential for efficient development. You'll gain a deep understanding of the project structure, exploring critical directories like `lib` (for Dart code), `assets` (for resources), and `pubspec.yaml` (for dependencies and configuration). By the end of this lesson, you'll be able to navigate your Flutter project with confidence.
+We'll dive into the `main` function and explain its significance. You'll also learn about the MaterialApp widget and how widgets, along with widget trees, play a pivotal role in building Flutter apps.
+
+A well-structured Flutter project is essential for efficient development. You'll gain a deep understanding of the project structure, exploring critical directories and files like : 
+ * `lib` (for Dart code), 
+ * `assets` (for resources)
+ * `pubspec.yaml` (for dependencies and configuration). 
+ 
+ By the end of this lesson, you'll be able to navigate your Flutter project with confidence.
 
 ### Main function 
 
@@ -131,7 +138,15 @@ Certainly! Here's a simplified representation of a typical Flutter project file 
   - pubspec.yaml
 ```
 
-This represents a basic Flutter project structure. The `lib` folder contains the main Dart files organized into subdirectories for screens, widgets, and utilities. The `android` and `ios` folders are platform-specific folders for Android and iOS configurations, respectively. The `test` folder is for unit and widget tests, and `pubspec.yaml` is the file where dependencies and project metadata are defined. The `build` folder holds generated build files, and other configuration folders like `android` and `ios` contain platform-specific configurations. This structure provides a clean separation of concerns and is customizable based on project needs.
+This represents a basic Flutter project structure. 
+
+* The `lib` folder contains the main Dart files organized into subdirectories for screens, widgets, and utilities. 
+* The `android` and `ios` folders are platform-specific folders for Android and iOS configurations, respectively. 
+* The `test` folder is for unit and widget tests, 
+*  `pubspec.yaml` is the file where dependencies and project metadata are defined. 
+* The `build` folder holds generated build files, and other configuration folders like `android` and `ios` contain platform-specific configurations. 
+
+This structure provides a clean separation of concerns and is customizable based on project needs.
 
 ### `lib` folder
 
@@ -225,7 +240,9 @@ By seamlessly integrating JIT for development and AOT for deployment, Flutter pr
 Flutter plugins extend the functionality of your app, allowing you to access device features, third-party services, and more. We'll introduce you to Flutter plugins, highlighting their versatility and the benefits they bring to your project.
 
 
-## 🧪 Exercices 
+## 🧪 Exercises 
+
+::: warning Exercise 1
 
 Discover and utilize basic Flutter widgets to create a playful and visually appealing UI for a "Flutter Zoo" app.
 
@@ -245,9 +262,10 @@ Discover and utilize basic Flutter widgets to create a playful and visually appe
    - Experiment with styling options for widgets, including colors, fonts, and button styles.
    - Make the zoo entrance screen lively and fun.
 
-## 🎯 Solutions
 
-::: details click here to view a solution
+:::tip Solutions
+
+::: details Expand
 ```dart
 import 'package:flutter/material.dart';
 
@@ -310,7 +328,7 @@ class ZooEntranceScreen extends StatelessWidget {
 
 ```
 ::: 
-
+:::
 
 ## 📖 Further reading
 

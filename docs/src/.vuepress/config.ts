@@ -27,14 +27,14 @@ export default defineUserConfig({
 
         sidebar: [
           { text: 'Home', link: '/' },
-          "/overview/",
-          "/dart/",
-          "/ui/",
-          "/widget/",
-          "/net/",
-          "/nav/",
-          "/db/",
-          "/advanced/",
+          "/1.overview/",
+          "/2.dart/",
+          "/3.quickstart/",
+          "/4.widget/",
+          "/5.network/",
+          "/6.navigation/",
+          "/7.persistance/",
+          "/8.advanced/",
         ], 
   }),
 

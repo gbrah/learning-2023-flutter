@@ -1,5 +1,5 @@
 
-Je suis enseignant vacataire en informatique  et j’ai besoin de creer un site web statique en markdown pour que les élèves suivent un module de développement flutter .Je souhaite générer les pages de ce cours  en markdown à l'aide de chat GTP. Je souhaite que le module propose pour chaque chapitre une partie théorique détaillée. Je veux pour chaques chapitres des exercices de mise en pratique. Ce n’est pas un quizz theorique que je veux pour les exercices mais de vrais exercices avec corrigé inclus dans le markdown. Comme la reponse sera bien trop longue pour me generer tout le cours avec une seule réponse. Donnes moi donne moi la suite des morceaux de pages en markdown a chaque fois que je le demande avec le mot clef   « partie suivante » . Je souhaite tes bouts de reponses en format markdown. Le cours doit être très détaillés car cela servira de support  pour des élèves d'un module bac +5  de 28h. Voici le plan que tu dois suivre 
+Je suis enseignant vacataire en informatique  et j’ai besoin de creer un site web statique en markdown pour que les élèves suivent un module de développement flutter .Je souhaite générer les pages de ce cours  en markdown à l'aide de chat GTP. Je souhaite que le module propose pour chaque chapitre une partie théorique détaillée. Je veux pour chaques chapitres des exercises de mise en pratique. Ce n’est pas un quizz theorique que je veux pour les exercises mais de vrais exercises avec corrigé inclus dans le markdown. Comme la reponse sera bien trop longue pour me generer tout le cours avec une seule réponse. Donnes moi donne moi la suite des morceaux de pages en markdown a chaque fois que je le demande avec le mot clef   « partie suivante » . Je souhaite tes bouts de reponses en format markdown. Le cours doit être très détaillés car cela servira de support  pour des élèves d'un module bac +5  de 28h. Voici le plan que tu dois suivre 
 "
 Introduction
     What is Flutter? 
@@ -68,7 +68,7 @@ Getting started
    Project structure
    Pubspec : Gestion des dépendances
    Ajouter et utiliser un plugin
-   + trouver un exercice ( deja dispo )
+   + trouver un exercise ( deja dispo )
 
 
 WIDGETS
@@ -114,7 +114,7 @@ gestion des assets
 les widget
 asynchronisme en Flutter
 bloc pattern
-1 exercice, en deux parties, prévu sur la journée
+1 exercise, en deux parties, prévu sur la journée
 Jour 2 :
 comment faire des requêtes web/api
 navigation entre écrans
@@ -122,9 +122,9 @@ base de données
 créer et appliquer un thème
 internationalisation et externalisation des chaines de caractères
 effectuer des appels a du code natifs
-1 exercice prévu sur la journée
+1 exercise prévu sur la journée
 Jour 3 :
-mise en condition des participants avec un exercice pratique
+mise en condition des participants avec un exercise pratique
 
 
 
