@@ -35,7 +35,7 @@ export default defineUserConfig({
           "/6.network/",
 
           "/7.persistance/",
-          "/8.advanced/",
+          "/8.others/",
         ], 
   }),
 

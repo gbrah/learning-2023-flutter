@@ -1,6 +1,6 @@
 # Persistence 
 
-## Shared Preferences 
+## Use sharedPreferences 
 
 #### Definition
 
@@ -8,7 +8,7 @@ Shared Preferences provide a simple way to store key-value pairs persistently.
 
 Shared preference is an API that will store un an XML file simple data types like int, double, bool, String and StringList or json encoded objects.
 
-#### Declare the dependency
+#### Dependency declaration
 ```yaml
 flutter pub add shared_preferences
 ```  
@@ -52,23 +52,33 @@ Use SharedPreferences to
 
 
 
-##  Database
+##  Use database
 
 SQLite is a powerful and lightweight relational database that's commonly used for data storage in Flutter apps. 
 
+::: tip Why use SQLite?
 On mobile development, SQLite is a popular choice for local data storage due to its efficiency and ease of use. It is mainly used for offline data storage, caching, and managing structured data.
+::: 
 
-There is multiple packages to use SQLite in Flutter from low-level to high-level abstractions. The most popular ones are [`sqflite`](https://pub.dev/packages/sqflite) and [`drift`](https://pub.dev/packages/drift/example).
+There is multiple packages to use SQLite in Flutter from low-level to high-level abstractions. The most popular ones are [`sqflite`](https://pub.dev/packages/sqflite) and [`drift`](https://pub.dev/packages/drift/example). Sqflite is a low-level package that provides direct access to SQLite databases, while drift is a higher-level package that offers an ORM-like experience with type safety and reactive programming features. Sqflite supports both Android and iOS platforms, while drift supports Android, iOS, and web platforms. The choice between the two depends on your specific needs and preferences for database management in your Flutter app.
 
 ::: warning support
 sqlflite is not supported on web platform.
 :::
 
-#### Declare the dependency
-```yamlyaml
+#### Dependency declaration
+
+```yaml
 flutter pub add sqflite
 ```
-#### Creating and managing SQLite databases.
+or add to the pubspec.yaml file 
+
+```yaml
+dependencies:
+  sqflite: ^2.0.0+4
+```
+
+### Creating SQLite databases.
 ```dart
 import 'package:sqflite/sqflite.dart';
 
@@ -87,25 +97,10 @@ final database = openDatabase(
    version: 1,
 );
 ```
-#### Prepare the data model
 
-Here is an example of a complex data type with sub-mapping. Sub-mapping for complex data types need to be handled. It consists in converting the subobject to map when saving to database and reconstructing the subobject from map when reading from database.
+### Performing CRUD 
 
-```dart
-class Question {
-  final String text;
-  final List<Answer> answers;
-   Question({required this.text, required this.answers});
-   Map<String, dynamic> toMap() {
-       return {
-             'text': text,
-             //  answers need to be converted to map
-               'answers': answers.map((answer) => answer.toMap()).toList(),
-       };
-   }
-```
-
-#### Performing CRUD (Insert, Read, Update, Delete) operations.
+CRUD operations (Create, Read, Update, Delete) are fundamental for managing data in a database. Here are examples of how to perform CRUD operations using the sqflite package in Flutter.
 
 ##### Insert data
 ```dart
@@ -171,127 +166,114 @@ Future<void> deleteQuiz(int id) async {
 }
 ```
 
-## 🧪 Exercises 
+#### Prepare the data model
+
+Because sqflite queries return a `List<Map<String, dynamic>>`, it's common to create a data model class that represents the structure of the data and provides methods for converting between the database format and the Dart object format. This makes it easier to work with the data in your application. Here is an example of a complex data type with sub-mapping. 
+
+```dart
+class Question {
+  final String text;
+  final List<Answer> answers;
+   Question({required this.text, required this.answers});
+   Map<String, dynamic> toMap() {
+       return {
+             'text': text,
+             //  answers need to be converted to map
+               'answers': answers.map((answer) => answer.toMap()).toList(),
+       };
+   }
+```
+
+### Transactions
+You can also perform transactions to execute multiple operations atomically, ensuring data integrity and consistency. Transactions allow you to group multiple database operations together, and if any operation fails, the entire transaction can be rolled back to maintain a consistent state.
+
+here is an example of using transactions to insert a quiz and its associated answers atomically:
+
+```dart
+Future<void> insertQuizWithAnswers(Quiz quiz) async {
+   final db = await database;
+   await db.transaction((txn) async {
+         // Insert the quiz and get its generated id
+         int quizId = await txn.insert('quizzes', quiz.toMap());
+         // Insert each answer associated with the quiz
+         for (var answer in quiz.answers) {
+               await txn.insert('answers', {  
+                     'quiz_id': quizId, // Foreign key to associate with the quiz
+                     'text': answer.text,
+                     'is_correct': answer.isCorrect ? 1 : 0,
+               });
+         }
+   });
+}
+```
+
+## 🧪 Exercise
+
+
+::: warning Step 1 - Sqflite dependency declaration
+Declare the dependency for sqflite in your pubspec.yaml file and run flutter pub get to install it.
+:::
+
+::: warning Step 2 - Database initialization
+Initialize the database by creating the necessary tables and setting up the schema.
 
 Implement the following database schema to store quiz questions and answers:
 ![Quiz Database](../assets/images/bdd.png)
 
+To not overcomplicate the exercise, please find below a sample code snippet for database initialization with the above schema. You can modify it as needed.
 
-  #### Steps
-1. Sqflite dependency declaration
-2. Database initialization
-3. Data model creation
-4. SQL CRUD functions implementation
-
-Please find below some usefull functions to get you started :
-
-::: details Database initialization
+:::details Database initialization
 ```dart
-return await openDatabase(
+Database? _database;
+
+  Future<Database> get database async {
+    if (_database != null) return _database!;
+    _database = await _initDatabase();
+    return _database!;
+  }
+
+  Future<Database> _initDatabase() async {
+    final path = await getDatabasesPath();
+    final dbPath = join(path, 'quiz.db');
+
+    return await openDatabase(
       dbPath,
       version: 1,
-      onCreate: (Database db, int version) async {
-        try {
-          await db.execute('''
-        CREATE TABLE questions (
-          id INTEGER PRIMARY KEY,
-          label TEXT NOT NULL,
-          correctAnswerId INTEGER NOT NULL
-        )
-      ''');
-
-          // Create the 'answers' table
-          await db.execute('''
-        CREATE TABLE answers (
-          id INTEGER,
-          label TEXT NOT NULL,
-          question_id INTEGER NOT NULL,
-          PRIMARY KEY (id, question_id),
-          FOREIGN KEY (question_id) REFERENCES questions (id) ON DELETE CASCADE
-        )
-      ''');
-        } catch (e) {
-          // Handle database creation errors
-          print('Error during database creation: $e');
-          // Log or display the error as needed
-        }
-        await db.close();
+      onCreate: (db, version) async {
+        await db.execute('''
+          CREATE TABLE questions (
+            id INTEGER PRIMARY KEY,
+            label TEXT NOT NULL,
+            correct_answer_id INTEGER NOT NULL
+          )
+        ''');
+        await db.execute('''
+          CREATE TABLE answers (
+            id INTEGER,
+            label TEXT NOT NULL,
+            question_id INTEGER NOT NULL,
+            PRIMARY KEY (id, question_id),
+            FOREIGN KEY (question_id) REFERENCES questions (id) ON DELETE CASCADE
+          )
+        ''');
       },
     );
+  }
+
+
 ```
 :::
 
-::: details SQL CRUD functions
-```dart
-Future<void> insertQuestionsWithAnswers(List<Question> questions) async {
-    Database db = await database; // Assuming 'database' is your SQLite database instance
 
-    await db.transaction((txn) async {
-      for (var question in questions) {
-        int questionId = await txn.rawInsert(
-          'INSERT INTO questions (label, correctAnswerId) VALUES (?, ?)',
-          [question.label, question.correctAnswerId],
-        );
-
-        for (var answer in question.answers) {
-          await txn.rawInsert(
-            'INSERT INTO answers (id, label, question_id) VALUES (?, ?, ?)',
-            [answer.id, answer.label, questionId],
-          );
-        }
-      }
-    });
-    await db.close();
-  }
-
-
-  Future<List<Question>> getQuestionsWithAnswers() async {
-    Database db = await database;
-    List<Map<String, dynamic>> questionMaps = await db.rawQuery('''
-    SELECT questions.id AS id, questions.label AS label, questions.correctAnswerId AS correctAnswerId, answers.id AS answer_id, answers.label AS answer_label 
-    FROM questions
-    INNER JOIN answers ON questions.id = answers.question_id
-  ''');
-
-    Map<int, Question> questionMap = {};
-
-    for (var questionMapData in questionMaps) {
-      final questionId = questionMapData['id'] as int;
-      final answerId = questionMapData['answer_id'] as int; // Assuming answer ID is prefixed with 'answers.'
-      final answerLabel = questionMapData['answer_label'] as String; // Assuming answer label is prefixed with 'answers.'
-
-      if (!questionMap.containsKey(questionId)) {
-        questionMap[questionId] = Question.fromMap(questionMapData);
-        questionMap[questionId]!.answers = [];
-      }
-
-      // Adding answers to respective questions
-      questionMap[questionId]!.answers.add(Answer(id: answerId, label: answerLabel));
-    }
-
-    await db.close();
-
-    return questionMap.values.toList();
-  }
-
-  Future<void> deleteQuestions() async {
-    Database db = await database;
-    await db.rawDelete('DELETE FROM questions');
-    await db.close();
-  }
-
-  Future<void> deleteAnswers() async {
-    Database db = await database;
-    await db.rawDelete('DELETE FROM answers');
-    await db.close();
-  }
-  ```
+::: warning Step 3 - Evolve the data model to support database storage conversion
+Create  methods for converting between the database Map format and Dart objects for the quiz questions and answers. This will make it easier to work with the data in your application.
 :::
 
-5. SQLite database integration after network fetch and on app launch
+::: warning Step 4 - CRUD functions implementation
+Implement functions to perform Create, Read, Update, and Delete (CRUD) operations on the quiz questions and answers in the database. This will allow you to manage the quiz data effectively.
+:::
 
-::: warning You can follow this logic for step 5:
-
+::: warning Step 5 - Use the database & Implement data caching strategy
 
 1. First app launch **with** network: 
    * Make an **API request** and store in the database.
@@ -305,19 +287,49 @@ Future<void> insertQuestionsWithAnswers(List<Question> questions) async {
    * Make an **API request**, return the data, and store in the database, store also the timestamp of the last successful request.
 :::
 
-### 🎯 Solutions
 
-::: details Here
-[Github repository sources](https://github.com/gbrah/learning-src-2023-flutter)
+::: tip Complete solution
+
+:::details Expand
+[https://zapp.run/edit/flutter-zaik06yaail0](https://zapp.run/edit/flutter-zaik06yaail0)
 :::
+
+
 
 ##  File I/O 
 
-- Understanding file operations.
-- Reading and writing files in Flutter.
-- Permissions and file handling best practices.
+File I/O allows you to read and write files on the device's file system. This can be useful for storing larger amounts of data or for working with files that need to be accessed outside of the app.
 
-Files are essential for storing and managing data in many applications. This lesson guides you through the basics of file input/output operations in Flutter, including reading and writing files. You'll also learn about permissions and best practices for secure and efficient file handling.
+```dart
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';  
+
+Future<String> get _localPath async {
+   final directory = await getApplicationDocumentsDirectory();
+   return directory.path;
+}
+
+Future<File> get _localFile async {
+   final path = await _localPath;
+   return File('$path/quiz_data.txt');
+}
+
+Future<File> writeQuizData(String data) async {
+   final file = await _localFile;
+   return file.writeAsString(data);
+}
+
+Future<String> readQuizData() async {
+   try {
+         final file = await _localFile;
+         String contents = await file.readAsString();
+         return contents;
+   } catch (e) {
+         return 'Error: $e';
+   }
+}
+```
+
 
 ## 📖 Further reading
 
