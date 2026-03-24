@@ -33,12 +33,22 @@ final counter = prefs.getInt('counter') ?? 0;
 
 ## 🧪 Exercise
 
+
+
+::: warning Exercise 1 - Use shared preferences to store quiz data and timestamp of last successful API fetch.
+
 Use SharedPreferences to 
 - Store the json quiz data fetched from the API on a String key "quiz_data".
 - Store an integer value containing the timestamp of the last successful API fetch.
 - On app launch, check if there is quiz data stored in SharedPreferences than is less than 5 minutes old.
 - if yes, load the quiz data from SharedPreferences
 - if no, fetch the quiz data from the API, store it in SharedPreferences along with the new timestamp.
+
+::: tip Solution 
+
+::: details Expand
+[https://zapp.run/edit/flutter-zhhc06v0hhd0?](https://zapp.run/edit/flutter-zhhc06v0hhd0?)
+:::
 
 
 

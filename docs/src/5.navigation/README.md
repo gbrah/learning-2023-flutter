@@ -123,13 +123,19 @@ Effective state management between routes is essential for maintaining a consist
 
 ## 🧪 Exercises 
 
-Add navigation to the Quiz Application.
+::: warning Exercice 1 - Add navigation to the Quiz Application.
 
-## 🎯 Solutions
+- Implement navigation from the home screen to the quiz screen when a user starts the quiz.
+- Ensure that the quiz screen can navigate back to the home screen after the quiz is completed.
+- Pass necessary data (e.g., quiz questions) from the home screen to the quiz screen using route parameters.
 
-::: details Solution
-[Github repository sources](https://github.com/gbrah/learning-src-2023-flutter)
+
+::: tip Complete solution 
+
+::: details Expand
+[https://zapp.run/edit/flutter-zud606w9ud70](https://zapp.run/edit/flutter-zud606w9ud70)
 :::
+
 
 ## 📖 Further reading
 

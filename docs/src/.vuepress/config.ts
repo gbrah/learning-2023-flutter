@@ -31,8 +31,9 @@ export default defineUserConfig({
           "/2.dart/",
           "/3.quickstart/",
           "/4.widget/",
-          "/5.network/",
-          "/6.navigation/",
+          "/5.navigation/",
+          "/6.network/",
+
           "/7.persistance/",
           "/8.advanced/",
         ], 
