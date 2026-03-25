@@ -16,12 +16,14 @@ features:
     details: Flutter install, hello world, project structure, pubspec plugins...
   - title: 4. Widgets
     details:  Widget Tree, Stateless/Stateful Widgets,  Lifecycle, Data Passing, Resource Management...
-  - title: 5. Async & Network
-    details: Asynchronous Programming, Futures, FutureBuilder, Streams, Connecting to the Internet
-  - title: 6. Navigation
+  - title: 5. Navigation
     details: Routes Definition, Declaring Routes, Navigating Screens, Transmitting Data, State Management 
+  - title: 6. Async & Network
+    details: Asynchronous Programming, Futures, FutureBuilder, Streams, Connecting to the Internet
   - title: 7. Persistence
     details: Shared Preferences (Definition, Usage), File I/O, Database
+  - title: 8. Others features
+    details:  MVVM architecture, Internationalization, Accessibility
 footer: Worldline © 2023 | tech at Worldline
 ---
 

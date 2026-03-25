@@ -291,7 +291,7 @@ Implement functions to perform Create, Read, Update, and Delete (CRUD) operation
 ::: tip Complete solution
 
 :::details Expand
-[https://zapp.run/edit/flutter-zaik06yaail0](https://zapp.run/edit/flutter-zaik06yaail0)
+[https://zapp.run/edit/flutter-z0sk06bg0sl0](https://zapp.run/edit/flutter-z0sk06bg0sl0)
 :::
 
 
