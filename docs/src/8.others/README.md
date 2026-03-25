@@ -409,6 +409,19 @@ public class MainActivity extends FlutterActivity {
 
 ```
 
+### Exercise
+
+::: warning Exercise 1 - Implement a native module to get the OS version of the device
+In this exercise, you will implement a native module that retrieves the operating system version of the device. You will create a method channel to communicate between Flutter and the native code, implement the native code to get the OS version, and integrate this functionality into your Flutter app to display the OS version on the screen.
+:::
+
+::: tip Complete solution
+::: details Expand
+[https://github.com/gbrah/learning-2023-flutter](https://github.com/gbrah/learning-2023-flutter)
+:::
+
+
+
 ## Internationalization
 
 ::: warning TODO
