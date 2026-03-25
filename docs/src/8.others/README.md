@@ -426,6 +426,36 @@ In this exercise, you will implement a native module that retrieves the operatin
 :::
 
 
+## Design systems : Cupertino and Material
+
+![design systems](../assets/images/designsystems.png)
+
+Design systems are sets of UI components, styles, and interactions that ensure visual consistency across an app and across platforms. Flutter ships with two parallel design systems: Cupertino and Material.
+
+#### Cupertino (iOS/macOS)
+  - Purpose: Provide widgets and patterns that align with Apple’s Human Interface Guidelines.
+  - Constraints:
+    - Widgets mirror iOS/macOS aesthetics and behavior (e.g., CupertinoButton, CupertinoNavigationBar, CupertinoTabScaffold).
+    - Limited platform-specific customization beyond what Apple’s guidelines allow; aims for native iOS/macOS look and feel.
+    - Animations and motion are tuned to iOS conventions (e.g., typical navigation transitions, gesture semantics).
+  - When to use:
+    - An app primarily targeting iOS/macOS, or when you want a platform-native iOS/Mac experience.
+
+#### Material (Material 3)
+  - Purpose: Provide a comprehensive, cross-platform design system built around Material Design 3 (M3) with rich motion, theming, and accessibility features.
+  - Constraints:
+    - Widgets (e.g., MaterialApp, ElevatedButton, Card, NavigationBar) follow Material 3 theming, elevation, and motion guidelines.
+    - Emphasizes a unified, platform-agnostic look with responsive theming, density, and typography.
+    - Interaction and motion guidelines (ripples, transitions) are standardized across platforms, but can be tuned or overridden.
+  - When to use:
+    - An app targeting broad audiences across Android, iOS, web, and desktop, or when you want a modern, cohesive Material experience.
+
+#### Practical implications in Flutter
+  - The widgets are separate libraries: material.dart and cupertino.dart.
+  - You can mix and match, but consider consistency and user expectations per platform.
+  - The Theme system (ThemeData for Material, CupertinoThemeData for Cupertino) lets you customize colors, typography, and styles globally.
+  - Accessibility: Both systems expose semantics and accessibility hooks; ensure roles, labels, and contrast meet requirements.
+
 ## Internationalization
 
 ::: warning TODO
