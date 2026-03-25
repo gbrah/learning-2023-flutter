@@ -113,6 +113,8 @@ Generate the JSON serialization code `quiz.g.dart`by running the following comma
 dart run build_runner build --delete-conflicting-outputs
 ```
 
+* Download the project code [here 💾](https://github.com/gbrah/learning-2023-flutter/raw/refs/heads/main/docs/src/assets/sources/step6-jsonserialization.zip)
+
 [//]: <> (https://zapp.run/edit/flutter-zjs606fzjs70)
 :::
 
@@ -344,10 +346,11 @@ The view model will be responsible for fetching quiz data from the repository, m
 :::
 
 ::: tip Complete solution
-::: details Expand
-[https://zapp.run/edit/flutter-zjs606fzjs70](https://zapp.run/edit/flutter-zjs606fzjs70)
-:::
 
+:::details Expand
+* Check it on Zapp : [https://zapp.run/edit/flutter-zjs606fzjs70](https://zapp.run/edit/flutter-zjs606fzjs70) 
+* or download the project code [here 💾](https://github.com/gbrah/learning-2023-flutter/raw/refs/heads/main/docs/src/assets/sources/step7-mvvm.zip)
+:::
 
 
 ## Native Code Binding
@@ -415,11 +418,12 @@ public class MainActivity extends FlutterActivity {
 In this exercise, you will implement a native module that retrieves the operating system version of the device. You will create a method channel to communicate between Flutter and the native code, implement the native code to get the OS version, and integrate this functionality into your Flutter app to display the OS version on the screen.
 :::
 
-::: tip Complete solution
-::: details Expand
-[https://github.com/gbrah/learning-2023-flutter](https://github.com/gbrah/learning-2023-flutter)
-:::
 
+::: tip Complete solution
+:::details Expand
+* Check it on Gihub : [https://github.com/gbrah/learning-2023-flutter](https://github.com/gbrah/learning-2023-flutter)
+* or download the project code [here 💾](https://github.com/gbrah/learning-2023-flutter/raw/refs/heads/main/docs/src/assets/sources/step8-nativecodebinding.zip)
+:::
 
 
 ## Internationalization

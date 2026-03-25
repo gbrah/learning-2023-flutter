@@ -33,8 +33,6 @@ final counter = prefs.getInt('counter') ?? 0;
 
 ## 🧪 Exercise
 
-
-
 ::: warning Exercise 1 - Use shared preferences to store quiz data and timestamp of last successful API fetch.
 
 Use SharedPreferences to 
@@ -44,10 +42,11 @@ Use SharedPreferences to
 - if yes, load the quiz data from SharedPreferences
 - if no, fetch the quiz data from the API, store it in SharedPreferences along with the new timestamp.
 
-::: tip Solution 
+::: tip Complete Solution 
 
 ::: details Expand
-[https://zapp.run/edit/flutter-zhhc06v0hhd0?](https://zapp.run/edit/flutter-zhhc06v0hhd0?)
+* Check it on Zapp : [https://zapp.run/edit/flutter-zhhc06v0hhd0](https://zapp.run/edit/flutter-zhhc06v0hhd0) 
+* or download the project code [here 💾](https://github.com/gbrah/learning-2023-flutter/raw/refs/heads/main/docs/src/assets/sources/step4-sharedprefs.zip)
 :::
 
 
@@ -291,7 +290,8 @@ Implement functions to perform Create, Read, Update, and Delete (CRUD) operation
 ::: tip Complete solution
 
 :::details Expand
-[https://zapp.run/edit/flutter-z0sk06bg0sl0](https://zapp.run/edit/flutter-z0sk06bg0sl0)
+* Check it on Zapp : [https://zapp.run/edit/flutter-z0sk06bg0sl0](https://zapp.run/edit/flutter-z0sk06bg0sl0) 
+* or download the project code [here 💾](https://github.com/gbrah/learning-2023-flutter/raw/refs/heads/main/docs/src/assets/sources/step5-database.zip)
 :::
 
 

@@ -320,7 +320,9 @@ To display the quiz data in your Flutter application, you can use a FutureBuilde
 ::: tip Complete solution 
 
 ::: details Expand
-[https://zapp.run/edit/flutter-zx6k067tx6l0](https://zapp.run/edit/flutter-zx6k067tx6l0)
+
+* Check it on Zapp : [https://zapp.run/edit/flutter-zx6k067tx6l0](https://zapp.run/edit/flutter-zx6k067tx6l0) 
+* or download the project code [here 💾](https://github.com/gbrah/learning-2023-flutter/raw/refs/heads/main/docs/src/assets/sources/step3-network.zip)
 :::
 
 ## 📖 Further reading

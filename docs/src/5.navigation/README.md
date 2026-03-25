@@ -133,7 +133,10 @@ Effective state management between routes is essential for maintaining a consist
 ::: tip Complete solution 
 
 ::: details Expand
-[https://zapp.run/edit/flutter-zud606w9ud70](https://zapp.run/edit/flutter-zud606w9ud70)
+
+* Check it on Zapp : [https://zapp.run/edit/flutter-zud606w9ud70](https://zapp.run/edit/flutter-zud606w9ud70) 
+* or download the project code [here 💾](https://github.com/gbrah/learning-2023-flutter/raw/refs/heads/main/docs/src/assets/sources/step2-navigation.zip)
+
 :::
 
 

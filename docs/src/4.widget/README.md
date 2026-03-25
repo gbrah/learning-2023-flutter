@@ -500,7 +500,9 @@ When the `MyApp`widget will create `questionScreen()` composable you will  mock 
 ::: tip Complete solution 
 
 ::: details Expand
-[https://zapp.run/edit/flutter-z05i06f605j0](https://zapp.run/edit/flutter-z05i06f605j0)
+
+* Check it on Zapp : [https://zapp.run/edit/flutter-z05i06f605j0](https://zapp.run/edit/flutter-z05i06f605j0) 
+* or download the project code [here 💾](https://github.com/gbrah/learning-2023-flutter/raw/refs/heads/main/docs/src/assets/sources/step1-widget.zip)
 :::
 
 
