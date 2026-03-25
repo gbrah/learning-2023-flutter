@@ -187,6 +187,135 @@ lib/
 | **UI** | **Dialogs/Modals** | Dialog Components, Alert Dialogs, Bottom Sheets | Overlay UI components for user interactions and confirmations. Display error messages, warnings, and confirmations. Request additional user input. Block background interaction when necessary. |
 
 
+##### Services 
+
+A Service can have multiple implementations, for example, you can have an API service that fetches data from the internet, a database service that fetches data from a local database, a mock service that provides fake data for testing, and a platform service that detects the platform the app is running on.
+
+Here is the skeleton code of a services
+```dart
+class ApiService {
+  Future<Quiz> fetchQuiz() async {
+    // Implement API request logic here
+    // Make an API request, return the data, and store it in the database, along with the timestamp of the last successful request.
+  }
+}
+```
+
+
+##### Repository
+
+a Repository is responsible for orchestrating data retrieval and storage, acting as a single source of truth for the app. It abstracts away the details of data sources (API, local database, cache) and provides a clean interface for the view models to interact with. Here is the skeleton code of a repository that uses multiple services to manage data:
+
+```dart
+class QuizRepository {
+  final ApiService apiService;
+  final DatabaseService databaseService;
+
+  QuizRepository({required this.apiService, required this.databaseService});
+
+  Future<Quiz> getQuiz() async {
+    // Implement data retrieval logic here
+     * Check if the quiz data is available in the local database and if it is still valid (e.g., not expired).
+     * If valid data is available, return it from the database.
+     * If not, make an API request to fetch the quiz data, return it, and store it in the database along with the timestamp of the last successful request.
+  }
+}
+```
+
+##### Routing
+
+Routing isolation and management is crucial for maintaining a clean and organized codebase. By creating a dedicated routing file, you can manage all the routes in your application in one place, making it easier to maintain and update as your app grows. Here is an example of how to define named routes and use them for navigation throughout your app:
+
+```dart
+class AppRoutes {
+  static const String welcome = '/welcome';
+  static const String quiz = '/quiz';
+  static const String score = '/score';
+
+  static Route<dynamic> generateRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case welcome:
+        return MaterialPageRoute(builder: (_) => WelcomeScreen());
+      case quiz:
+        return MaterialPageRoute(builder: (_) => QuizScreen());
+      case score:
+        return MaterialPageRoute(builder: (_) => ScoreScreen());
+      default:
+        return MaterialPageRoute(builder: (_) => WelcomeScreen());
+    }
+  }
+}
+```
+
+##### Command pattern and view model
+
+The command pattern is a design pattern that encapsulates a request as an object, allowing you to parameterize clients with queues, requests, and operations. In the context of Flutter, you can use the command pattern to handle user interactions and business logic in a more organized way. Here is an example of how to implement the command pattern in a Flutter app:
+
+```dart
+class Command extends ChangeNotifier {
+  Command(this._action);
+
+  bool _running = false;
+  bool get running => _running;
+
+  Exception? _error;
+  Exception? get error => _error;
+
+  bool _completed = false;
+  bool get completed => _completed;
+
+  final Future<void> Function() _action;
+
+  Future<void> execute() async {
+    if (_running) {
+      return;
+    }
+
+    _running = true;
+    _completed = false;
+    _error = null;
+    notifyListeners();
+
+    try {
+      await _action();
+      _completed = true;
+    } on Exception catch (error) {
+      _error = error;
+    } finally {
+      _running = false;
+      notifyListeners();
+    }
+  }
+
+  void clear() {
+    _running = false;
+    _error = null;
+    _completed = false;
+    notifyListeners();
+  }
+}
+```
+
+It can be used in the view model to handle user interactions and business logic, for example:
+
+```dart
+class QuizViewModel extends ChangeNotifier {
+  final QuizRepository quizRepository;
+   late Command loadQuizCommand;
+
+     QuizViewModel(this._quizRepository) {
+    loadQuizCommand = Command(_load)..execute();
+  }
+
+   Future<void> _load() async {
+      // Implement the logic to load quiz data here
+   }
+
+   // Other view model logic...
+
+}
+```
+
 ## 🧪 Exercise 
 
 ::: warning Step 1 - Refactor the quiz app to use MVVM architecture
